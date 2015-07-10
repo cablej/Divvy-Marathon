@@ -15,11 +15,14 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: MKMapView!
     
     var locationManager : CLLocationManager!
+    var pin : MKPointAnnotation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("This will print the current location.")
+        
+        pin = MKPointAnnotation()
         
         locationManager = CLLocationManager()
         locationManager.requestAlwaysAuthorization() //background
@@ -49,11 +52,13 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         let center = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
-        var currentLocation = CLLocation()
         
-        var locationLat = currentLocation.coordinate.latitude
-        var locationLong = currentLocation.coordinate.longitude
-        print("Location: (\(locationLat) \(locationLong))")
+        /*mapView.removeAnnotation(pin)
+        pin = MKPointAnnotation()
+        pin.coordinate = center
+        pin.title = "Current Location"
+        mapView.addAnnotation(pin)*/
+        
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
