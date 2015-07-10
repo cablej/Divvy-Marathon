@@ -11,11 +11,16 @@ import UIKit
 class ViewController: UIViewController {
 
     var numMinutes = 0
+    let dateFormatter = NSDateFormatter()
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dateFormatter = NSDateFormatter()
+        
+    }
+
+    @IBAction func onTappedGoButton(sender: UIButton) {
         dateFormatter.dateFormat = "hh"
         let hrsStr = dateFormatter.stringFromDate(datePicker.date)
         dateFormatter.dateFormat = "mm"
@@ -23,9 +28,7 @@ class ViewController: UIViewController {
         let minsStr = dateFormatter.stringFromDate(datePicker.date)
         let minutes = Int(minsStr)
         numMinutes = hours! * 60 + minutes!
-    }
-
-    @IBAction func onTappedGoButton(sender: UIButton) {
+        print(numMinutes)
     }
     
     
