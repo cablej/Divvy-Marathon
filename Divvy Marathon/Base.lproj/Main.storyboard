@@ -37,7 +37,7 @@
                                     <action selector="onTappedGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ay4-CL-7Q9"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-I0-9XI">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-I0-9XI">
                                 <rect key="frame" x="131" y="130" width="339" height="118"/>
                                 <date key="date" timeIntervalSinceReferenceDate="458247124.82007998">
                                     <!--2015-07-10 18:52:04 +0000-->
