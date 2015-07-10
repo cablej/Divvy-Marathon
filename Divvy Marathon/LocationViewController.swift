@@ -7,15 +7,46 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, CLLocationManagerDelegate {
+    
+    var locationManager : CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("This will print the current location.")
         
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization() //background
+        locationManager.requestWhenInUseAuthorization() //foreground
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+            print("Location services enabled")
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            
+        } else {
+            print("Location services disabled")
+        }
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var location : CLLocationCoordinate2D = manager.location!.coordinate
+        
+        print("User location: (\(location.latitude), \(location.longitude))")
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error updating location: " + error.localizedDescription)
     }
 
     override func didReceiveMemoryWarning() {
