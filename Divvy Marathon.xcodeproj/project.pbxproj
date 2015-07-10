@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108B1B01B50587C00866503 /* SwiftyJSON.swift */; };
 		D15875531B502E3900B44588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875521B502E3900B44588 /* AppDelegate.swift */; };
 		D15875551B502E3900B44588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875541B502E3900B44588 /* ViewController.swift */; };
 		D15875581B502E3900B44588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15875561B502E3900B44588 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D108B1B01B50587C00866503 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		D158754F1B502E3900B44588 /* Divvy Marathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Divvy Marathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15875521B502E3900B44588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15875541B502E3900B44588 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D108B1AD1B50585A00866503 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D108B1B01B50587C00866503 /* SwiftyJSON.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		D108B1AE1B50586500866503 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D15875801B5035B600B44588 /* Station.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		D108B1AF1B50586900866503 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D15875541B502E3900B44588 /* ViewController.swift */,
+				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D15875461B502E3900B44588 = {
 			isa = PBXGroup;
 			children = (
@@ -109,11 +136,11 @@
 		D15875511B502E3900B44588 /* Divvy Marathon */ = {
 			isa = PBXGroup;
 			children = (
+				D108B1AF1B50586900866503 /* View Controllers */,
+				D108B1AE1B50586500866503 /* Objects */,
+				D108B1AD1B50585A00866503 /* Helper Classes */,
 				D15875521B502E3900B44588 /* AppDelegate.swift */,
-				D15875541B502E3900B44588 /* ViewController.swift */,
 				D15875561B502E3900B44588 /* Main.storyboard */,
-				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
-				D15875801B5035B600B44588 /* Station.swift */,
 				D15875591B502E3900B44588 /* Assets.xcassets */,
 				D158755B1B502E3900B44588 /* LaunchScreen.storyboard */,
 				D158755E1B502E3900B44588 /* Info.plist */,
@@ -277,6 +304,7 @@
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D15875811B5035B600B44588 /* Station.swift in Sources */,
 				D15875531B502E3900B44588 /* AppDelegate.swift in Sources */,
+				D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */,
 				D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
