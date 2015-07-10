@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
                                 <rect key="frame" x="226" y="550" width="149" height="30"/>
                                 <state key="normal" title="Find Current Location"/>
+                                <connections>
+                                    <segue destination="2uA-de-Vdn" kind="show" id="050-fZ-BTh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j3K-AA-Qda" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qNw-rI-yXY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="geU-Qo-Z0t"/>
                 </viewController>
@@ -29,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="1117" y="399"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
         <scene sceneID="bDF-r5-xaG">
             <objects>
-                <viewController id="2uA-de-Vdn" sceneMemberID="viewController">
+                <viewController id="2uA-de-Vdn" customClass="LocationViewController" customModule="Divvy_Marathon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x80-fl-hKM"/>
                         <viewControllerLayoutGuide type="bottom" id="7eA-ha-FZb"/>

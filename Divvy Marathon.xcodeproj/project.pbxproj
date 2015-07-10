@@ -16,6 +16,7 @@
 		D15875731B502E3A00B44588 /* Divvy_MarathonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875721B502E3A00B44588 /* Divvy_MarathonUITests.swift */; };
 		D15875811B5035B600B44588 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875801B5035B600B44588 /* Station.swift */; };
 		D15875831B50375300B44588 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15875821B50375300B44588 /* MapKit.framework */; };
+		D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18812681B50392A00B1C5FE /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D15875741B502E3A00B44588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D15875801B5035B600B44588 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		D15875821B50375300B44588 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D18812681B50392A00B1C5FE /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				D15875521B502E3900B44588 /* AppDelegate.swift */,
 				D15875541B502E3900B44588 /* ViewController.swift */,
 				D15875561B502E3900B44588 /* Main.storyboard */,
+				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
 				D15875801B5035B600B44588 /* Station.swift */,
 				D15875591B502E3900B44588 /* Assets.xcassets */,
 				D158755B1B502E3900B44588 /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D15875811B5035B600B44588 /* Station.swift in Sources */,
 				D15875531B502E3900B44588 /* AppDelegate.swift in Sources */,
+				D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
