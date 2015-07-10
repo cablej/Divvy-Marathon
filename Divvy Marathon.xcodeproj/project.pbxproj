@@ -15,6 +15,7 @@
 		D15875681B502E3A00B44588 /* Divvy_MarathonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875671B502E3A00B44588 /* Divvy_MarathonTests.swift */; };
 		D15875731B502E3A00B44588 /* Divvy_MarathonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875721B502E3A00B44588 /* Divvy_MarathonUITests.swift */; };
 		D15875811B5035B600B44588 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875801B5035B600B44588 /* Station.swift */; };
+		D15875831B50375300B44588 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15875821B50375300B44588 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D15875721B502E3A00B44588 /* Divvy_MarathonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divvy_MarathonUITests.swift; sourceTree = "<group>"; };
 		D15875741B502E3A00B44588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D15875801B5035B600B44588 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		D15875821B50375300B44588 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15875831B50375300B44588 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,7 @@
 		D15875461B502E3900B44588 = {
 			isa = PBXGroup;
 			children = (
+				D15875821B50375300B44588 /* MapKit.framework */,
 				D15875511B502E3900B44588 /* Divvy Marathon */,
 				D15875661B502E3A00B44588 /* Divvy MarathonTests */,
 				D15875711B502E3A00B44588 /* Divvy MarathonUITests */,
@@ -195,6 +199,11 @@
 				TargetAttributes = {
 					D158754E1B502E3900B44588 = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D15875621B502E3900B44588 = {
 						CreatedOnToolsVersion = 7.0;
@@ -485,6 +494,7 @@
 				D15875791B502E3A00B44588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D158757A1B502E3A00B44588 /* Build configuration list for PBXNativeTarget "Divvy MarathonTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +503,7 @@
 				D158757C1B502E3A00B44588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D158757D1B502E3A00B44588 /* Build configuration list for PBXNativeTarget "Divvy MarathonUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +512,7 @@
 				D158757F1B502E3A00B44588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
