@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wLz-di-bPE">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
     </dependencies>
     <scenes>
@@ -16,7 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Divvy Marathon!!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLf-ag-6Tp">
                                 <rect key="frame" x="233" y="72" width="135" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -36,7 +36,7 @@
                                     <action selector="onTappedGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ay4-CL-7Q9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
                                 <rect key="frame" x="226" y="550" width="149" height="30"/>
                                 <state key="normal" title="Find Current Location"/>
                                 <connections>
@@ -52,7 +52,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j3K-AA-Qda" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qNw-rI-yXY"/>
                             <constraint firstItem="h7s-I0-9XI" firstAttribute="top" secondItem="cBO-fI-rib" secondAttribute="bottom" constant="8" id="89c-bZ-RXg"/>
                             <constraint firstItem="1Ua-nd-6If" firstAttribute="top" secondItem="h7s-I0-9XI" secondAttribute="bottom" constant="-1" id="PVW-IZ-jjT"/>
                             <constraint firstItem="cBO-fI-rib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SkL-ci-9Zn"/>
@@ -60,6 +59,7 @@
                             <constraint firstItem="1Ua-nd-6If" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e2P-zm-5GZ"/>
                             <constraint firstItem="cBO-fI-rib" firstAttribute="top" secondItem="hLf-ag-6Tp" secondAttribute="bottom" constant="8" id="f5H-38-Uu2"/>
                             <constraint firstItem="h7s-I0-9XI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSz-eE-vHB"/>
+                            <constraint firstItem="j3K-AA-Qda" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qNw-rI-yXY"/>
                             <constraint firstItem="hLf-ag-6Tp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vnS-Qo-QL2"/>
                         </constraints>
                     </view>
