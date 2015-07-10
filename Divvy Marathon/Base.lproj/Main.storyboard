@@ -37,19 +37,19 @@
                                     <action selector="onTappedGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ay4-CL-7Q9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
-                                <rect key="frame" x="226" y="550" width="149" height="30"/>
-                                <state key="normal" title="Find Current Location"/>
-                                <connections>
-                                    <segue destination="2uA-de-Vdn" kind="show" id="050-fZ-BTh"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-I0-9XI">
                                 <rect key="frame" x="131" y="130" width="339" height="118"/>
                                 <date key="date" timeIntervalSinceReferenceDate="458247124.82007998">
                                     <!--2015-07-10 18:52:04 +0000-->
                                 </date>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
+                                <rect key="frame" x="226" y="396" width="149" height="30"/>
+                                <state key="normal" title="Find Current Location"/>
+                                <connections>
+                                    <segue destination="2uA-de-Vdn" kind="show" id="050-fZ-BTh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

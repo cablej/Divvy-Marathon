@@ -65,6 +65,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
 
     /*
     // MARK: - Navigation
