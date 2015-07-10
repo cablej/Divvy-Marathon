@@ -17,6 +17,7 @@
 		D15875811B5035B600B44588 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875801B5035B600B44588 /* Station.swift */; };
 		D15875831B50375300B44588 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15875821B50375300B44588 /* MapKit.framework */; };
 		D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18812681B50392A00B1C5FE /* LocationViewController.swift */; };
+		D188126B1B50473200B1C5FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D188126A1B50473200B1C5FE /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D15875801B5035B600B44588 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		D15875821B50375300B44588 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D18812681B50392A00B1C5FE /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		D188126A1B50473200B1C5FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D188126B1B50473200B1C5FE /* CoreLocation.framework in Frameworks */,
 				D15875831B50375300B44588 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +87,7 @@
 		D15875461B502E3900B44588 = {
 			isa = PBXGroup;
 			children = (
+				D188126A1B50473200B1C5FE /* CoreLocation.framework */,
 				D15875821B50375300B44588 /* MapKit.framework */,
 				D15875511B502E3900B44588 /* Divvy Marathon */,
 				D15875661B502E3A00B44588 /* Divvy MarathonTests */,
@@ -414,6 +418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Divvy Marathon/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cable.Divvy-Marathon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Divvy Marathon/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cable.Divvy-Marathon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
