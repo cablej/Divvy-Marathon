@@ -17,19 +17,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Divvy Marathon!!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLf-ag-6Tp">
+                                <rect key="frame" x="233" y="72" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.095824537051432776" green="0.51394754105989526" blue="0.81155303030303028" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How long do you want to ride to last?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBO-fI-rib">
+                                <rect key="frame" x="159" y="101" width="283" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-nd-6If">
+                                <rect key="frame" x="285" y="247" width="30" height="30"/>
+                                <state key="normal" title="Go!"/>
+                                <connections>
+                                    <action selector="onTappedGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ay4-CL-7Q9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
+>>>>>>> Stashed changes
                                 <rect key="frame" x="226" y="550" width="149" height="30"/>
                                 <state key="normal" title="Find Current Location"/>
                                 <connections>
                                     <segue destination="2uA-de-Vdn" kind="show" id="050-fZ-BTh"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-I0-9XI">
+                                <rect key="frame" x="131" y="130" width="339" height="118"/>
+                                <date key="date" timeIntervalSinceReferenceDate="458247124.82007998">
+                                    <!--2015-07-10 18:52:04 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+<<<<<<< Updated upstream
                             <constraint firstItem="j3K-AA-Qda" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qNw-rI-yXY"/>
+=======
+                            <constraint firstItem="h7s-I0-9XI" firstAttribute="top" secondItem="cBO-fI-rib" secondAttribute="bottom" constant="8" id="89c-bZ-RXg"/>
+                            <constraint firstItem="1Ua-nd-6If" firstAttribute="top" secondItem="h7s-I0-9XI" secondAttribute="bottom" constant="-1" id="PVW-IZ-jjT"/>
+                            <constraint firstItem="cBO-fI-rib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SkL-ci-9Zn"/>
+                            <constraint firstItem="hLf-ag-6Tp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="StY-gd-CvP"/>
+                            <constraint firstItem="1Ua-nd-6If" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e2P-zm-5GZ"/>
+                            <constraint firstItem="cBO-fI-rib" firstAttribute="top" secondItem="hLf-ag-6Tp" secondAttribute="bottom" constant="8" id="f5H-38-Uu2"/>
+                            <constraint firstItem="h7s-I0-9XI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSz-eE-vHB"/>
+                            <constraint firstItem="hLf-ag-6Tp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vnS-Qo-QL2"/>
+>>>>>>> Stashed changes
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="geU-Qo-Z0t"/>
+                    <connections>
+                        <outlet property="OnTappedGoButton" destination="1Ua-nd-6If" id="G7E-X7-3T8"/>
+                        <outlet property="datePicker" destination="h7s-I0-9XI" id="RUe-Ek-DAj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
