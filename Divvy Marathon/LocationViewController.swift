@@ -12,6 +12,8 @@ import CoreLocation
 
 class LocationViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet var mapView: MKMapView!
+    
     var locationManager : CLLocationManager!
 
     override func viewDidLoad() {
@@ -43,6 +45,15 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         var location : CLLocationCoordinate2D = manager.location!.coordinate
         
         print("User location: (\(location.latitude), \(location.longitude))")
+        
+        let center = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(region, animated: true)
+        var currentLocation = CLLocation()
+        
+        var locationLat = currentLocation.coordinate.latitude
+        var locationLong = currentLocation.coordinate.longitude
+        print("Location: (\(locationLat) \(locationLong))")
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
