@@ -9,7 +9,10 @@
 import UIKit
 
 class Station: NSObject {
-    var latitude = 0
-    var longitude = 0
+    var latitude = 0.0
+    var longitude = 0.0
+    var numSpotsAvailable = 0
+    var numBikesAvailable = 0
+    var streetAddress = ""
     
 }
