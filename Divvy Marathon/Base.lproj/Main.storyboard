@@ -37,7 +37,6 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3K-AA-Qda">
->>>>>>> Stashed changes
                                 <rect key="frame" x="226" y="550" width="149" height="30"/>
                                 <state key="normal" title="Find Current Location"/>
                                 <connections>
@@ -53,9 +52,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-<<<<<<< Updated upstream
                             <constraint firstItem="j3K-AA-Qda" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qNw-rI-yXY"/>
-=======
                             <constraint firstItem="h7s-I0-9XI" firstAttribute="top" secondItem="cBO-fI-rib" secondAttribute="bottom" constant="8" id="89c-bZ-RXg"/>
                             <constraint firstItem="1Ua-nd-6If" firstAttribute="top" secondItem="h7s-I0-9XI" secondAttribute="bottom" constant="-1" id="PVW-IZ-jjT"/>
                             <constraint firstItem="cBO-fI-rib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SkL-ci-9Zn"/>
@@ -64,7 +61,6 @@
                             <constraint firstItem="cBO-fI-rib" firstAttribute="top" secondItem="hLf-ag-6Tp" secondAttribute="bottom" constant="8" id="f5H-38-Uu2"/>
                             <constraint firstItem="h7s-I0-9XI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSz-eE-vHB"/>
                             <constraint firstItem="hLf-ag-6Tp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vnS-Qo-QL2"/>
->>>>>>> Stashed changes
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="geU-Qo-Z0t"/>
