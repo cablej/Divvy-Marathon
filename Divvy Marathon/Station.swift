@@ -9,5 +9,7 @@
 import UIKit
 
 class Station: NSObject {
-
+    var latitude = 0
+    var longitude = 0
+    
 }
