@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 let DIVVY_JSON_URL = "http://www.divvybikes.com/stations/json"
 
@@ -34,7 +35,7 @@ class DataManager: NSObject {
                             let numBikesAvailable = stationJSON.1["availableBikes"].intValue
                             let streetAddress = stationJSON.1["stAddress1"].stringValue
                             
-                            let station = Station(latitude: latitude, longitude: longitude, numSpotsAvailable: numSpotsAvailable, numBikesAvailable: numBikesAvailable, streetAddress: streetAddress)
+                            let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), numSpotsAvailable: numSpotsAvailable, numBikesAvailable: numBikesAvailable, streetAddress: streetAddress)
                             stations.append(station)
                         }
                         

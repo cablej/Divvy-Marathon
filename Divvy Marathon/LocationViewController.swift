@@ -12,11 +12,13 @@ import CoreLocation
 
 class LocationViewController: UIViewController, CLLocationManagerDelegate {
     
+    let METER_TO_MILE = 1609.344 //conversion from meters to miles
+    
     @IBOutlet var mapView: MKMapView!
     
     var locationManager : CLLocationManager!
-    
     var stations: [Station] = []
+    var currentLocation: CLLocation = CLLocation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +27,33 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
             if let tempStations = stationsArray {
                 print("Yay! Got \(tempStations.count) stations.")
                 self.stations = tempStations
+                self.findClosestLocation()
             }
         }
         
         initializeLocation()
         
+    }
+    
+    func findClosestLocation() { //displays the closest divvy station to the user's location
+        var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
+        var closestStation: Station = Station()
+        for station in stations {
+            let distance = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude).distanceFromLocation(currentLocation) //get distance between station and current location
+            let miles = metersToMiles(distance)
+            if(closestDistance == -1.0 ||  miles < closestDistance) {
+                closestDistance = miles
+                closestStation = station
+            }
+        }
+        
+        addPin(closestStation.coordinate, title: closestStation.streetAddress)
+        
+        print("\(closestStation.streetAddress) is closest at \(closestDistance) miles")
+    }
+    
+    func metersToMiles(meters: Double) -> Double {
+        return meters / METER_TO_MILE
     }
     
     //MARK: Location methods
@@ -57,6 +81,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         let location : CLLocationCoordinate2D = manager.location!.coordinate
         
         print("User location: (\(location.latitude), \(location.longitude))")
+        
+        currentLocation = manager.location!
         
     }
     

@@ -11,25 +11,23 @@ import CoreLocation
 
 class Station: NSObject {
     
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
     var numSpotsAvailable = 0
     var numBikesAvailable = 0
     var streetAddress = ""
+    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
-    convenience init(latitude: Double, longitude: Double, numSpotsAvailable: Int, numBikesAvailable: Int, streetAddress: String) {
+    convenience init(coordinate: CLLocationCoordinate2D, numSpotsAvailable: Int, numBikesAvailable: Int, streetAddress: String) {
         
         self.init()
         
-        self.latitude = latitude
-        self.longitude = longitude
+        self.coordinate = coordinate
         self.numSpotsAvailable = numSpotsAvailable
         self.numBikesAvailable = numBikesAvailable
         self.streetAddress = streetAddress
     }
     
     override var description: String { //for debugging, when you print out the variable this gets printed
-        return "\(streetAddress): (\(latitude), \(longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
+        return "\(streetAddress): (\(coordinate.latitude), \(coordinate.longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
     }
     
 }
