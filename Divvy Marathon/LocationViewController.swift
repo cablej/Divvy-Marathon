@@ -15,72 +15,61 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: MKMapView!
     
     var locationManager : CLLocationManager!
-    var pin : MKPointAnnotation!
+    
+    var stations: [Station] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("This will print the current location.")
         
-        pin = MKPointAnnotation()
+        DataManager.getDivvyBikeData { (stationsArray) -> Void in
+            if let tempStations = stationsArray {
+                print("Yay! Got \(tempStations.count) stations.")
+                self.stations = tempStations
+            }
+        }
+        
+        initializeLocation()
+        
+    }
+    
+    //MARK: Location methods
+    
+    func initializeLocation() { //sets up everything needed for the mapView and locationManager
+        mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true) //makes the map follow the user's location, no need for all that other code updating it
         
         locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization() //background
-        locationManager.requestWhenInUseAuthorization() //foreground
+        //         locationManager.requestAlwaysAuthorization() //uncomment for access in background
+        locationManager.requestWhenInUseAuthorization() //allows use in foreground
         
         if CLLocationManager.locationServicesEnabled() {
             
             print("Location services enabled")
             
-            locationManager.delegate = self
+            locationManager.delegate = self //LocationViewController conforms to the CLLocationManagerDelegate, so the locationManager will give updates to this class
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
-            
         } else {
             print("Location services disabled")
         }
-        
-        // Do any additional setup after loading the view.
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var location : CLLocationCoordinate2D = manager.location!.coordinate
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
+        let location : CLLocationCoordinate2D = manager.location!.coordinate
         
         print("User location: (\(location.latitude), \(location.longitude))")
-        
-        let center = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(region, animated: true)
-        
-        /*mapView.removeAnnotation(pin)
-        pin = MKPointAnnotation()
-        pin.coordinate = center
-        pin.title = "Current Location"
-        mapView.addAnnotation(pin)*/
         
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error updating location: " + error.localizedDescription)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func addPin(coordinate: CLLocationCoordinate2D, title: String) {
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = title
+        mapView.addAnnotation(pin)
     }
-    
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
