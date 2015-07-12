@@ -6,6 +6,9 @@
 //  Copyright © 2015 Jack Cable. All rights reserved.
 //
 
+/*  find info on generating directions here: http://www.techotopia.com/index.php/Using_MKDirections_to_get_iOS_8_Map_Directions_and_Routes should we consider segueing to a new viewcontroller that shows the route once a pin is selected? We should see if it's possible to display multiple routes on a single map. That way we can show the route to the nearest station (walking), the route(s) between stations (biking), and the route to the desired end location (walking).
+*/
+
 import UIKit
 import MapKit
 import CoreLocation
@@ -36,6 +39,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    /**
+        displays the nearest divvy station
+    **/
     func findClosestLocation() { //displays the closest divvy station to the user's location
         var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
         var closestStation: Station = Station()
