@@ -27,7 +27,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
             if let tempStations = stationsArray {
                 print("Yay! Got \(tempStations.count) stations.")
                 self.stations = tempStations
-                self.findClosestLocation()
+                //self.findClosestLocation()
+                self.findNearbyStations()
             }
         }
         
@@ -50,6 +51,29 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         addPin(closestStation.coordinate, title: closestStation.streetAddress)
         
         print("\(closestStation.streetAddress) is closest at \(closestDistance) miles")
+    }
+
+    /**
+        returns and displays the five nearest stations to the users current location
+    **/
+    func findNearbyStations() -> [Station] {
+        var nearbyStations: [Station] = []
+        for _ in 0..<5 {
+            var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
+            var closestStation: Station = Station()
+            for station in stations {
+                let distance = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude).distanceFromLocation(currentLocation)
+                let miles = metersToMiles(distance)
+                if((closestDistance == -1.0 ||  miles < closestDistance) && !(nearbyStations.contains(station))) {
+                    closestDistance = miles
+                    closestStation = station
+                }
+            }
+            nearbyStations.append(closestStation)
+            addPin(closestStation.coordinate, title: closestStation.streetAddress)
+        }
+        return nearbyStations
+
     }
     
     func metersToMiles(meters: Double) -> Double {
