@@ -9,9 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     var numMinutes = 0
-    let dateFormatter = NSDateFormatter()
     var numMiles = 0.0
     /*
     estimated average speed fo a bike in the city: ~6mph accoring to treehuggers.com based on data in lyons france.
@@ -21,25 +22,31 @@ class ViewController: UIViewController {
     var numNeccessaryIntermediaryStops = 0 //doesn't include start and end stations
     var tryToHitAsManyBikesAsPossible = false
     
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    @IBAction func onTappedGoButton(sender: UIButton) {
-        dateFormatter.dateFormat = "hh"
-        let hrsStr = dateFormatter.stringFromDate(datePicker.date)
-        dateFormatter.dateFormat = "mm"
-        let hours = Int(hrsStr)
-        let minsStr = dateFormatter.stringFromDate(datePicker.date)
-        let minutes = Int(minsStr)
-        numMinutes = hours! * 60 + minutes!
-        print(numMinutes)
+        
+        StyleHelper.initializeViewController(self)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent //white status bar
+        
+        datePicker.countDownDuration = 30*60 //set to 30 minutes default
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dvc = segue.destinationViewController as? LocationViewController {
+            
+            let seconds = tripLengthInSeconds()
+            
+            dvc.tripLengthInSeconds = seconds
+            
+        }
+    }
     
-    
+    /**
+        returns the trip length, in seconds, from the value of the date picker
+    **/
+    func tripLengthInSeconds() -> Int {
+        return Int(datePicker.countDownDuration) //all that parsing was for nothing...
+    }
 
     /**
         uses the numMinutes to calculate numMiles based on the estimated average speed of a bike in the city
@@ -59,11 +66,6 @@ class ViewController: UIViewController {
         else {
             numNeccessaryIntermediaryStops = minsExcludingStartEndTimes / 25 - 1
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

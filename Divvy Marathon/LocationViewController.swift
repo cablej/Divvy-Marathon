@@ -13,36 +13,85 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class LocationViewController: UIViewController, CLLocationManagerDelegate {
+class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     let METER_TO_MILE = 1609.344 //conversion from meters to miles
     
     @IBOutlet var mapView: MKMapView!
     
+    var tripLengthInSeconds = 0
+    
     var locationManager : CLLocationManager!
     var stations: [Station] = []
     var currentLocation: CLLocation = CLLocation()
+    var currentRoute: MKRoute? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initializeLocation()
         
         DataManager.getDivvyBikeData { (stationsArray) -> Void in
             if let tempStations = stationsArray {
                 print("Yay! Got \(tempStations.count) stations.")
                 self.stations = tempStations
-                //self.findClosestLocation()
-                self.findNearbyStations()
+                self.displayWalkingDirections(self.findClosestLocation())
+                //self.findNearbyStations()
             }
         }
         
-        initializeLocation()
+        print("Seconds: " + String(tripLengthInSeconds))
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let nvc = segue.destinationViewController as? UINavigationController {
+            if let dvc = nvc.viewControllers.first as? ViewRouteTableViewController {
+                if let route = currentRoute {
+                    dvc.route = route
+                }
+            }
+        }
+    }
+    
+    func displayWalkingDirections(station: Station) {
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.mapItemForCurrentLocation()
+        let placemark = MKPlacemark(coordinate: station.coordinate, addressDictionary: nil)
+        request.destination = MKMapItem(placemark: placemark)
+        request.requestsAlternateRoutes = false
+        request.transportType = MKDirectionsTransportType.Walking
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
+            if error != nil {
+                print("Oh no :( Error: " + error!.description)
+            } else {
+                let route = response?.routes.first
+                self.currentRoute = route
+                self.showRoute(response!)
+            }
+        }
+    }
+    
+    func showRoute(response: MKDirectionsResponse) {
+        for route in response.routes {
+            mapView.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
+        }
+    }
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = TINT_COLOR
+        renderer.lineWidth = 5.0
+        return renderer
     }
     
     /**
         displays the nearest divvy station
     **/
-    func findClosestLocation() { //displays the closest divvy station to the user's location
+    func findClosestLocation() -> Station { //displays the closest divvy station to the user's location
         var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
         var closestStation: Station = Station()
         for station in stations {
@@ -57,6 +106,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         addPin(closestStation.coordinate, title: closestStation.streetAddress)
         
         print("\(closestStation.streetAddress) is closest at \(closestDistance) miles")
+        
+        return closestStation
     }
 
     /**
@@ -100,6 +151,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
             print("Location services enabled")
             
             locationManager.delegate = self //LocationViewController conforms to the CLLocationManagerDelegate, so the locationManager will give updates to this class
+            mapView.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         } else {
@@ -110,7 +162,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
         let location : CLLocationCoordinate2D = manager.location!.coordinate
         
-        print("User location: (\(location.latitude), \(location.longitude))")
+        //print("User location: (\(location.latitude), \(location.longitude))")
         
         currentLocation = manager.location!
         
@@ -126,6 +178,5 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         pin.title = title
         mapView.addAnnotation(pin)
     }
-
 
 }
