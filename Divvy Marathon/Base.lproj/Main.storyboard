@@ -137,6 +137,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="EUY-sC-E5j" id="eaa-Ex-kJf"/>
+                        <outlet property="messageLabel" destination="TGh-yT-se6" id="Nkx-Sb-Ise"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKl-Uj-ks1" userLabel="First Responder" sceneMemberID="firstResponder"/>

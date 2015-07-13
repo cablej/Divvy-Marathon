@@ -15,7 +15,9 @@ import CoreLocation
 
 class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    @IBOutlet var messageLabel: UILabel!
     let METER_TO_MILE = 1609.344 //conversion from meters to miles
+    let MILE_TO_FEET = 5280.0 //converstion from mile to feet
     
     @IBOutlet var mapView: MKMapView!
     
@@ -25,6 +27,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var stations: [Station] = []
     var currentLocation: CLLocation = CLLocation()
     var currentRoute: MKRoute? = nil
+    var routeCoordinates: [RouteCoordinate] = []
+    var currentRouteCoordinate = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +39,12 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             if let tempStations = stationsArray {
                 print("Yay! Got \(tempStations.count) stations.")
                 self.stations = tempStations
-                self.displayWalkingDirections(self.findClosestLocation())
+                
+                let location = self.findClosestLocation()
+                
+                print(location)
+                
+                self.displayWalkingDirections(location)
                 //self.findNearbyStations()
             }
         }
@@ -109,28 +118,11 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         return closestStation
     }
-
-    /**
-        returns and displays the five nearest stations to the users current location
-    **/
-    func findNearbyStations() -> [Station] {
-        var nearbyStations: [Station] = []
-        for _ in 0..<5 {
-            var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
-            var closestStation: Station = Station()
-            for station in stations {
-                let distance = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude).distanceFromLocation(currentLocation)
-                let miles = metersToMiles(distance)
-                if((closestDistance == -1.0 ||  miles < closestDistance) && !(nearbyStations.contains(station))) {
-                    closestDistance = miles
-                    closestStation = station
-                }
-            }
-            nearbyStations.append(closestStation)
-            addPin(closestStation.coordinate, title: closestStation.streetAddress)
-        }
-        return nearbyStations
-
+    
+    func distanceToCoordinate(coordinate: CLLocationCoordinate2D) -> Double {
+        let distance = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).distanceFromLocation(currentLocation)
+        let miles = metersToMiles(distance)
+        return miles
     }
     
     func metersToMiles(meters: Double) -> Double {
@@ -161,15 +153,29 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
         let location : CLLocationCoordinate2D = manager.location!.coordinate
-        
-        //print("User location: (\(location.latitude), \(location.longitude))")
-        
         currentLocation = manager.location!
+        
+        if userIsNearNextCoordinate() {
+            if let stationCoordinate = routeCoordinates[currentRouteCoordinate].station {
+                self.messageLabel.text = "Switch bikes at " + stationCoordinate.streetAddress + "."
+                if(currentRouteCoordinate < routeCoordinates.count - 1) {
+                    currentRouteCoordinate++
+                }
+            }
+        }
         
     }
     
-    func userIsNearPoint() {
-        
+    func userIsNearNextCoordinate() -> Bool {
+        if routeCoordinates.isEmpty { return false }
+        let nextCoordinate = routeCoordinates[currentRouteCoordinate]
+        return userIsNearCoordinate(nextCoordinate.coordinate)
+    }
+    
+    func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {
+        let distanceMiles = distanceToCoordinate(coordinate)
+        let distanceFeet = distanceMiles * MILE_TO_FEET
+        return distanceFeet <= 20
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

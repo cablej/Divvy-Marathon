@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108B1B01B50587C00866503 /* SwiftyJSON.swift */; };
 		D108B1B31B5066AD00866503 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108B1B21B5066AD00866503 /* DataManager.swift */; };
+		D10E02E61B54084400C57F51 /* RouteCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E02E51B54084400C57F51 /* RouteCoordinate.swift */; };
 		D15875531B502E3900B44588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875521B502E3900B44588 /* AppDelegate.swift */; };
 		D15875551B502E3900B44588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875541B502E3900B44588 /* ViewController.swift */; };
 		D15875581B502E3900B44588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15875561B502E3900B44588 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		D108B1B01B50587C00866503 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		D108B1B21B5066AD00866503 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D10E02E51B54084400C57F51 /* RouteCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCoordinate.swift; sourceTree = "<group>"; };
 		D158754F1B502E3900B44588 /* Divvy Marathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Divvy Marathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15875521B502E3900B44588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15875541B502E3900B44588 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */,
 				D15875801B5035B600B44588 /* Station.swift */,
+				D10E02E51B54084400C57F51 /* RouteCoordinate.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */,
 				D1C913C51B52F22D003FFFD3 /* ViewRouteTableViewController.swift in Sources */,
 				D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */,
+				D10E02E61B54084400C57F51 /* RouteCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
