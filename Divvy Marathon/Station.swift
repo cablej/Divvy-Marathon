@@ -13,21 +13,32 @@ class Station: NSObject {
     
     var numSpotsAvailable = 0
     var numBikesAvailable = 0
-    var streetAddress = ""
+    var name = ""
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var id = ""
     
-    convenience init(coordinate: CLLocationCoordinate2D, numSpotsAvailable: Int, numBikesAvailable: Int, streetAddress: String) {
+    convenience init(coordinate: CLLocationCoordinate2D, numSpotsAvailable: Int, numBikesAvailable: Int, name: String, id: String) {
         
         self.init()
         
         self.coordinate = coordinate
         self.numSpotsAvailable = numSpotsAvailable
         self.numBikesAvailable = numBikesAvailable
-        self.streetAddress = streetAddress
+        self.name = name
+        self.id = id
+    }
+    
+    convenience init(coordinate: CLLocationCoordinate2D, name: String, id: String) {
+        
+        self.init()
+        
+        self.coordinate = coordinate
+        self.name = name
+        self.id = id
     }
     
     override var description: String { //for debugging, when you print out the variable this gets printed
-        return "\(streetAddress): (\(coordinate.latitude), \(coordinate.longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
+        return "\(name): (\(coordinate.latitude), \(coordinate.longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
     }
     
 }

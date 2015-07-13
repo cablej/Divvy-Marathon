@@ -21,7 +21,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     @IBOutlet var mapView: MKMapView!
     
-    var tripLengthInSeconds = 0
+    var tripLengthInSeconds = 0.0
     
     var locationManager : CLLocationManager!
     var stations: [Station] = []
@@ -47,7 +47,24 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 print(location)
                 
+<<<<<<< Updated upstream
                 self.displayFullRoute()
+=======
+                DataManager.getRoute(self.tripLengthInSeconds, startStation: location, success: { (routeStations) -> Void in
+                    
+                    for station in routeStations {
+                        self.addPin(station.coordinate, title: station.name)
+                    }
+                    
+                    self.routeStations += routeStations
+                    self.displayFullRoute()
+                })
+                
+                
+                //self.displayWalkingDirections(location)
+                //self.displayDirectionsBetweenCoordinates
+                //self.findNearbyStations()
+>>>>>>> Stashed changes
             }
         }
         
@@ -121,9 +138,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         
-        addPin(closestStation.coordinate, title: closestStation.streetAddress)
+        addPin(closestStation.coordinate, title: closestStation.name)
         
-        print("\(closestStation.streetAddress) is closest at \(closestDistance) miles")
+        print("\(closestStation.name) is closest at \(closestDistance) miles")
         
         return closestStation
     }
@@ -164,7 +181,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let location : CLLocationCoordinate2D = manager.location!.coordinate
         currentLocation = manager.location!
         if userIsNearNextStation() {
-            self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].streetAddress + "."
+            self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
             numBikesOnThisRide++
             if(currentStationIndex < routeStations.count - 1) {
                 currentStationIndex++

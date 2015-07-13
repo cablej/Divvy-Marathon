@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 let DIVVY_JSON_URL = "http://www.divvybikes.com/stations/json"
+let ROUTE_URL = "http://tiphound.me/Divvy-Marathon/generateRoute.php"
 
 class DataManager: NSObject {
     
@@ -33,9 +34,10 @@ class DataManager: NSObject {
                             let longitude = stationJSON.1["longitude"].doubleValue
                             let numSpotsAvailable = stationJSON.1["availableDocks"].intValue
                             let numBikesAvailable = stationJSON.1["availableBikes"].intValue
-                            let streetAddress = stationJSON.1["stAddress1"].stringValue
+                            let name = stationJSON.1["stationName"].stringValue
+                            let id = stationJSON.1["id"].stringValue
                             
-                            let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), numSpotsAvailable: numSpotsAvailable, numBikesAvailable: numBikesAvailable, streetAddress: streetAddress)
+                            let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), numSpotsAvailable: numSpotsAvailable, numBikesAvailable: numBikesAvailable, name: name, id: id)
                             stations.append(station)
                         }
                         
@@ -48,6 +50,51 @@ class DataManager: NSObject {
         
         task?.resume()
         
+    }
+    
+    class func getRoute(seconds: Double, startStation: Station, success: ((routeStations: [Station]!) -> Void)) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: ROUTE_URL)!)
+        
+        let postString = "seconds=\(seconds)&startingStation=\(startStation.id)"
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        var responseString = ""
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if(error != nil) {
+                print("error=\(error)")
+                return
+            }
+            
+            responseString = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+            
+            if let routeJSON = stringToJSON(responseString) {
+                
+                var routeStations : [Station] = []
+                
+                for stationJSON in routeJSON {
+                    
+                    let name = stationJSON.1["station"]["name"].stringValue
+                    let id = stationJSON.1["station"]["id"].stringValue
+                    let latitude = stationJSON.1["station"]["latitude"].doubleValue
+                    let longitude = stationJSON.1["station"]["longitude"].doubleValue
+                    
+                    let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
+                    routeStations.append(station)
+                    
+                }
+                
+                success(routeStations: routeStations)
+            }
+            
+        }
+        
+        task?.resume()
     }
     
     class func stringToJSON(string: String) -> JSON? { //returns a JSON object of the given string
