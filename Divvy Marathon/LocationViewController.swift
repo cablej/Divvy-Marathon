@@ -29,6 +29,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var currentRoute: MKRoute? = nil
     var routeCoordinates: [RouteCoordinate] = []
     var currentRouteCoordinate = 0
+    var isOnBike = false
+    var routeStations: [Station] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 print(location)
                 
                 self.displayWalkingDirections(location)
+                //self.displayDirectionsBetweenCoordinates
                 //self.findNearbyStations()
             }
         }
@@ -63,11 +66,18 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     
-    func displayWalkingDirections(station: Station) {
+    func displayFullRoute() {
+        displayDirectionsBetweenCoordinates(currentLocation, endCoordinate: routeStations.first.coordinate)
+        for i in 1..<routeStations.count -1 {
+        }
+    }
+    
+    func displayDirectionsBetweenCoordinates(startCoordinate: CLLocationCoordinate2D, endCoordinate: CLLocationCoordinate2D) {
         let request = MKDirectionsRequest()
-        request.source = MKMapItem.mapItemForCurrentLocation()
-        let placemark = MKPlacemark(coordinate: station.coordinate, addressDictionary: nil)
-        request.destination = MKMapItem(placemark: placemark)
+        let firstPlacemark = MKPlacemark(coordinate: startCoordinate, addressDictionary: nil)
+        request.source = MKMapItem(placemark: firstPlacemark)
+        let secondPlacemark = MKPlacemark(coordinate: endCoordinate, addressDictionary: nil)
+        request.destination = MKMapItem(placemark: secondPlacemark)
         request.requestsAlternateRoutes = false
         request.transportType = MKDirectionsTransportType.Walking
         
@@ -188,5 +198,4 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         pin.title = title
         mapView.addAnnotation(pin)
     }
-
 }
