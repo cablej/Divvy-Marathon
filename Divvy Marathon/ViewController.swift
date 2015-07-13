@@ -22,14 +22,12 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let nvc = segue.destinationViewController as? UINavigationController {
-            if let dvc = nvc.viewControllers.first as? LocationViewController {
-                
-                let seconds = tripLengthInSeconds()
-                
-                dvc.tripLengthInSeconds = seconds
-                
-            }
+        if let dvc = segue.destinationViewController as? LocationViewController {
+            
+            let seconds = tripLengthInSeconds()
+            
+            dvc.tripLengthInSeconds = seconds
+            
         }
     }
     
@@ -37,6 +35,8 @@ class ViewController: UIViewController {
         returns the trip length, in seconds, from the value of the date picker
     **/
     func tripLengthInSeconds() -> Double {
+        print(datePicker.countDownDuration)
+        print(String(Double(datePicker.countDownDuration)))
         return Double(datePicker.countDownDuration) //all that parsing was for nothing...
     }
 
