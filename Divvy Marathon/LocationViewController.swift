@@ -47,9 +47,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 print(location)
                 
-<<<<<<< Updated upstream
                 self.displayFullRoute()
-=======
                 DataManager.getRoute(self.tripLengthInSeconds, startStation: location, success: { (routeStations) -> Void in
                     
                     for station in routeStations {
@@ -64,7 +62,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 //self.displayWalkingDirections(location)
                 //self.displayDirectionsBetweenCoordinates
                 //self.findNearbyStations()
->>>>>>> Stashed changes
             }
         }
         
