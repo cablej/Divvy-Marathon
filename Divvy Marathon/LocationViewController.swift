@@ -43,12 +43,14 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 let location = self.findClosestLocation()
                 
+                self.routeStations.append(location)
+                
                 print(location)
                 
                 //self.displayWalkingDirections(location)
                 //self.displayDirectionsBetweenCoordinates
                 //self.findNearbyStations()
-                //self.displayFullRoute()
+                self.displayFullRoute()
             }
         }
         
@@ -65,9 +67,11 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func displayFullRoute() {
-        displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[0].coordinate, addressDictionary: nil))
-        for i in 0...routeStations.count - 2 {
-            displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
+        displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[0].coordinate, addressDictionary: nil))
+        if routeStations.count >= 2 {
+            for i in 0...routeStations.count - 2 {
+                displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
+            }
         }
     }
     
