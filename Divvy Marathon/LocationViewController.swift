@@ -47,9 +47,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 print(location)
                 
-                //self.displayWalkingDirections(location)
-                //self.displayDirectionsBetweenCoordinates
-                //self.findNearbyStations()
                 self.displayFullRoute()
             }
         }
@@ -59,10 +56,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let nvc = segue.destinationViewController as? UINavigationController {
-            if let dvc = nvc.viewControllers.first as? ViewRouteTableViewController {
+            if let dvc = segue.destinationViewController as? ViewRouteTableViewController {
                 dvc.route = currentRoute
-            }
         }
     }
     
@@ -73,6 +68,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
             }
         }
+        /*for i in 0...routeStations.count - 2 {
+            displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
+        }*/
     }
     
     func displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark, endCoordinate: MKPlacemark) {
