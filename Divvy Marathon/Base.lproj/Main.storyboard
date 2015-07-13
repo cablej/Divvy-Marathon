@@ -6,6 +6,86 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="hDi-ct-fwy">
+            <objects>
+                <viewController id="DyK-fy-wAp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VF4-fa-wKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="HJO-rU-Wqu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IkF-xc-8mt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your Stats:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-n6-3tu">
+                                <rect key="frame" x="236" y="56" width="128" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="number of bikes today:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pab-Vg-bdG">
+                                <rect key="frame" x="200" y="107" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="most bikes in a day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Zy-IQj">
+                                <rect key="frame" x="200" y="136" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="number of miles today:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yQ-nK-ghN">
+                                <rect key="frame" x="200" y="187" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="most miles in a day:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5K-QL-ZN8">
+                                <rect key="frame" x="200" y="216" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Having Trouble? Log in or Sign up to see your stats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtb-ry-VvI">
+                                <rect key="frame" x="103" y="571" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7he-00-3bK">
+                                <rect key="frame" x="243" y="285" width="114" height="30"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=" See my sprints! ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="x2W-Pw-N5S" kind="show" id="RnI-eB-eB2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q5K-QL-ZN8" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="12A-vg-l2y"/>
+                            <constraint firstItem="Q5K-QL-ZN8" firstAttribute="top" secondItem="4yQ-nK-ghN" secondAttribute="bottom" constant="8" id="2Zq-MU-R5t"/>
+                            <constraint firstItem="7he-00-3bK" firstAttribute="top" secondItem="Q5K-QL-ZN8" secondAttribute="bottom" constant="50" id="2j0-WQ-c78"/>
+                            <constraint firstItem="4yQ-nK-ghN" firstAttribute="top" secondItem="5np-Zy-IQj" secondAttribute="bottom" constant="30" id="98b-Un-WQs"/>
+                            <constraint firstItem="4yQ-nK-ghN" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="G8f-cV-Stg"/>
+                            <constraint firstItem="HJO-rU-Wqu" firstAttribute="top" secondItem="Rtb-ry-VvI" secondAttribute="bottom" constant="8" id="Jbd-hL-KZ8"/>
+                            <constraint firstItem="Rtb-ry-VvI" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="NsS-xu-U5E"/>
+                            <constraint firstItem="5np-Zy-IQj" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="RM7-xj-2CQ"/>
+                            <constraint firstItem="7he-00-3bK" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="XFn-5B-kiN"/>
+                            <constraint firstItem="pab-Vg-bdG" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="Ypq-pD-jZh"/>
+                            <constraint firstItem="3wa-n6-3tu" firstAttribute="centerX" secondItem="IkF-xc-8mt" secondAttribute="centerX" id="gld-2H-Lj5"/>
+                            <constraint firstItem="5np-Zy-IQj" firstAttribute="top" secondItem="pab-Vg-bdG" secondAttribute="bottom" constant="8" id="zy4-uO-K3P"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKR-4H-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="-252"/>
+        </scene>
         <!--Divvy Marathon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -79,7 +159,20 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Divvy Marathon" id="geU-Qo-Z0t"/>
+                    <navigationItem key="navigationItem" title="Divvy Marathon" id="geU-Qo-Z0t">
+                        <barButtonItem key="leftBarButtonItem" title="user stats" id="xU8-Mw-z9t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="DyK-fy-wAp" kind="show" id="zgW-C7-6wG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="log in" id="SAm-YC-lgb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="vnW-z8-zKu" kind="show" id="n2k-Pb-ddc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="datePicker" destination="h7s-I0-9XI" id="RUe-Ek-DAj"/>
@@ -89,16 +182,16 @@
             </objects>
             <point key="canvasLocation" x="1117" y="399"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="bJZ-AU-T9c">
             <objects>
-                <viewController id="vnW-z8-zKu" sceneMemberID="viewController">
+                <viewController id="vnW-z8-zKu" customClass="LogInViewController" customModule="Divvy_Marathon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lRh-6R-uPX"/>
                         <viewControllerLayoutGuide type="bottom" id="jIB-P0-VaP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w2D-t2-N2V">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6L-Q6-qUE">
@@ -117,25 +210,20 @@
                                 <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIm-WJ-ewP">
-                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIm-WJ-ewP">
+                                <rect key="frame" x="0.0" y="476" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.72156862749999995" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="drV-0v-k6a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Ready...Set...Go!">
+                                <state key="normal" title="Ready...Set...Ride!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="jAi-kJ-uhq"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tz0-ph-38t">
-                                <rect key="frame" x="252" y="189" width="97" height="30"/>
-                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5LH-0f-g39">
                                 <rect key="frame" x="252" y="285" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
@@ -168,6 +256,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tz0-ph-38t">
+                                <rect key="frame" x="252" y="189" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -178,6 +274,8 @@
                             <constraint firstItem="H6L-Q6-qUE" firstAttribute="top" secondItem="rc2-8H-1kS" secondAttribute="bottom" constant="8" id="8QO-TL-mSd"/>
                             <constraint firstItem="s59-wK-4qo" firstAttribute="top" secondItem="tz0-ph-38t" secondAttribute="bottom" constant="8" id="Ewt-qa-WGA"/>
                             <constraint firstItem="lzu-Fa-9DA" firstAttribute="top" secondItem="5LH-0f-g39" secondAttribute="bottom" constant="8" id="Gaj-dE-zjw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FIm-WJ-ewP" secondAttribute="trailing" constant="-20" id="J8x-YT-TnD"/>
+                            <constraint firstItem="FIm-WJ-ewP" firstAttribute="leading" secondItem="w2D-t2-N2V" secondAttribute="leadingMargin" constant="-20" id="NvZ-vR-abg"/>
                             <constraint firstItem="s59-wK-4qo" firstAttribute="centerX" secondItem="w2D-t2-N2V" secondAttribute="centerX" id="PAJ-RE-OYI"/>
                             <constraint firstItem="5LH-0f-g39" firstAttribute="centerX" secondItem="w2D-t2-N2V" secondAttribute="centerX" id="dqK-VT-e7r"/>
                             <constraint firstItem="jIB-P0-VaP" firstAttribute="top" secondItem="FIm-WJ-ewP" secondAttribute="bottom" id="jNn-bt-VWk"/>
@@ -188,10 +286,34 @@
                             <constraint firstItem="H6L-Q6-qUE" firstAttribute="centerX" secondItem="w2D-t2-N2V" secondAttribute="centerX" id="z6P-wu-p3U"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logInPassword" destination="tz0-ph-38t" id="Jtk-qu-jUR"/>
+                        <outlet property="logInUsername" destination="H6L-Q6-qUE" id="ltb-TQ-Rwo"/>
+                        <outlet property="signUpPassword" destination="lzu-Fa-9DA" id="PH5-1I-mPo"/>
+                        <outlet property="signUpUsername" destination="5LH-0f-g39" id="fcx-Tx-Lfv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypC-At-smW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="1064"/>
+            <point key="canvasLocation" x="1117" y="1046"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yK5-UV-P8O">
+            <objects>
+                <viewController id="x2W-Pw-N5S" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X34-DY-cQf"/>
+                        <viewControllerLayoutGuide type="bottom" id="LWR-R6-DC0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZIh-Ch-bYV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwr-dg-v72" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="-252"/>
         </scene>
         <!--Divvy Marathon-->
         <scene sceneID="bDF-r5-xaG">
@@ -232,7 +354,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Divvy Marathon" id="C62-zv-cky">
-                        <barButtonItem key="rightBarButtonItem" title="View directions" id="xsD-r1-faR">
+                        <barButtonItem key="rightBarButtonItem" title="directions" id="xsD-r1-faR">
                             <connections>
                                 <segue destination="PGW-Ew-vWT" kind="show" id="gje-tH-1UT"/>
                             </connections>
@@ -327,4 +449,7 @@
             <point key="canvasLocation" x="462" y="399"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jAi-kJ-uhq"/>
+    </inferredMetricsTieBreakers>
 </document>

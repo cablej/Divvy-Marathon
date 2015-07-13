@@ -24,6 +24,7 @@
 		D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F37C21B52E43000367AAC /* StyleHelper.swift */; };
 		D1C913C51B52F22D003FFFD3 /* ViewRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */; };
 		D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */; };
+		DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F75291B544850007D650C /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D18F37C21B52E43000367AAC /* StyleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleHelper.swift; sourceTree = "<group>"; };
 		D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouteTableViewController.swift; sourceTree = "<group>"; };
 		D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepTableViewCell.swift; sourceTree = "<group>"; };
+		DA7F75291B544850007D650C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		D108B1AF1B50586900866503 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DA7F75291B544850007D650C /* LogInViewController.swift */,
 				D15875541B502E3900B44588 /* ViewController.swift */,
 				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
 				D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */,
@@ -318,6 +321,7 @@
 			files = (
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */,
+				DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */,
 				D108B1B31B5066AD00866503 /* DataManager.swift in Sources */,
 				D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */,
 				D15875811B5035B600B44588 /* Station.swift in Sources */,
