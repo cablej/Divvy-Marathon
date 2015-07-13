@@ -16,9 +16,12 @@ class ViewRouteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.contentInset = UIEdgeInsetsMake(60,0,0,0);
+        tableView.contentInset = UIEdgeInsetsMake(70,0,0,0);
         
         tableView.backgroundColor = UIColor.whiteColor()
+        
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     // MARK: - Table view data source

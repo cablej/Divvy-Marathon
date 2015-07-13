@@ -168,6 +168,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
     }
     
+    func userIsNearPoint() {
+        
+    }
+    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error updating location: " + error.localizedDescription)
     }

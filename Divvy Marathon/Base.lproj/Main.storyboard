@@ -159,23 +159,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a left on sample road" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-kl-4S1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a left on sample road" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-kl-4S1">
                                             <rect key="frame" x="8" y="11" width="215" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="5.5 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlr-Ze-oWe">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5.5 miles" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlr-Ze-oWe">
                                             <rect key="frame" x="524" y="11" width="68" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="qqQ-kl-4S1" firstAttribute="top" secondItem="Tk2-I0-Z7u" secondAttribute="topMargin" constant="3" id="A26-Sf-wh4"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Wlr-Ze-oWe" secondAttribute="bottom" constant="3.5" id="Wrq-pG-8Ue"/>
                                         <constraint firstItem="qqQ-kl-4S1" firstAttribute="leading" secondItem="Tk2-I0-Z7u" secondAttribute="leadingMargin" id="ZvT-Nu-Gxg"/>
+                                        <constraint firstItem="Wlr-Ze-oWe" firstAttribute="trailing" secondItem="Tk2-I0-Z7u" secondAttribute="trailingMargin" id="lsr-8z-u9e"/>
                                         <constraint firstItem="Wlr-Ze-oWe" firstAttribute="trailing" secondItem="Tk2-I0-Z7u" secondAttribute="trailingMargin" id="naE-kl-pFP"/>
+                                        <constraint firstItem="qqQ-kl-4S1" firstAttribute="leading" secondItem="Tk2-I0-Z7u" secondAttribute="leadingMargin" id="oCh-qI-f0M"/>
+                                        <constraint firstItem="Wlr-Ze-oWe" firstAttribute="top" secondItem="Tk2-I0-Z7u" secondAttribute="topMargin" constant="3" id="pz8-9o-tLU"/>
                                         <constraint firstItem="Wlr-Ze-oWe" firstAttribute="leading" secondItem="qqQ-kl-4S1" secondAttribute="trailing" constant="10" id="s6k-Tc-uON"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qqQ-kl-4S1" secondAttribute="bottom" constant="7" id="wOI-zU-A2f"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
