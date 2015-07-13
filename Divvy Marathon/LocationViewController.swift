@@ -26,11 +26,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var locationManager : CLLocationManager!
     var stations: [Station] = []
     var currentLocation: CLLocation = CLLocation()
-    var currentRoute: MKRoute? = nil
-    var routeCoordinates: [RouteCoordinate] = []
-    var currentRouteCoordinate = 0
-    var isOnBike = false
+    var currentRoute: [MKRouteStep] = []
+    var currentStationIndex = 0
     var routeStations: [Station] = []
+    var numBikesOnThisRide = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +45,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 print(location)
                 
-                self.displayWalkingDirections(location)
+                //self.displayWalkingDirections(location)
                 //self.displayDirectionsBetweenCoordinates
                 //self.findNearbyStations()
+                //self.displayFullRoute()
             }
         }
         
@@ -59,25 +59,22 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let nvc = segue.destinationViewController as? UINavigationController {
             if let dvc = nvc.viewControllers.first as? ViewRouteTableViewController {
-                if let route = currentRoute {
-                    dvc.route = route
-                }
+                dvc.route = currentRoute
             }
         }
     }
     
     func displayFullRoute() {
-        displayDirectionsBetweenCoordinates(currentLocation, endCoordinate: routeStations.first.coordinate)
-        for i in 1..<routeStations.count -1 {
+        displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[0].coordinate, addressDictionary: nil))
+        for i in 0...routeStations.count - 2 {
+            displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
         }
     }
     
-    func displayDirectionsBetweenCoordinates(startCoordinate: CLLocationCoordinate2D, endCoordinate: CLLocationCoordinate2D) {
+    func displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark, endCoordinate: MKPlacemark) {
         let request = MKDirectionsRequest()
-        let firstPlacemark = MKPlacemark(coordinate: startCoordinate, addressDictionary: nil)
-        request.source = MKMapItem(placemark: firstPlacemark)
-        let secondPlacemark = MKPlacemark(coordinate: endCoordinate, addressDictionary: nil)
-        request.destination = MKMapItem(placemark: secondPlacemark)
+        request.source = MKMapItem(placemark: startCoordinate)
+        request.destination = MKMapItem(placemark: endCoordinate)
         request.requestsAlternateRoutes = false
         request.transportType = MKDirectionsTransportType.Walking
         
@@ -88,7 +85,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 print("Oh no :( Error: " + error!.description)
             } else {
                 let route = response?.routes.first
-                self.currentRoute = route
+                self.currentRoute += route!.steps
                 self.showRoute(response!)
             }
         }
@@ -164,22 +161,20 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
         let location : CLLocationCoordinate2D = manager.location!.coordinate
         currentLocation = manager.location!
-        
-        if userIsNearNextCoordinate() {
-            if let stationCoordinate = routeCoordinates[currentRouteCoordinate].station {
-                self.messageLabel.text = "Switch bikes at " + stationCoordinate.streetAddress + "."
-                if(currentRouteCoordinate < routeCoordinates.count - 1) {
-                    currentRouteCoordinate++
-                }
+        if userIsNearNextStation() {
+            self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].streetAddress + "."
+            numBikesOnThisRide++
+            if(currentStationIndex < routeStations.count - 1) {
+                currentStationIndex++
             }
         }
         
     }
     
-    func userIsNearNextCoordinate() -> Bool {
-        if routeCoordinates.isEmpty { return false }
-        let nextCoordinate = routeCoordinates[currentRouteCoordinate]
-        return userIsNearCoordinate(nextCoordinate.coordinate)
+    func userIsNearNextStation() -> Bool {
+        if routeStations.isEmpty { return false }
+        let nextStation = routeStations[currentStationIndex]
+        return userIsNearCoordinate(nextStation.coordinate)
     }
     
     func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {

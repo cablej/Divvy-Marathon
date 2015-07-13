@@ -11,7 +11,7 @@ import MapKit
 
 class ViewRouteTableViewController: UITableViewController {
 
-    var route : MKRoute = MKRoute()
+    var route : [MKRouteStep] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +31,14 @@ class ViewRouteTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return route.steps.count
+        return route.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StepCell", forIndexPath: indexPath) as! RouteStepTableViewCell
         
-        let step: MKRouteStep = route.steps[indexPath.row]
+        let step: MKRouteStep = route[indexPath.row]
         
         cell.directionsLabel.text = step.instructions
         cell.distanceLabel.text = "\(step.distance) meters"
