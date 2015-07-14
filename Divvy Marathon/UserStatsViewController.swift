@@ -15,9 +15,14 @@ class UserStatsViewController: UIViewController {
     @IBOutlet weak var numMilesTodayLabel: UILabel!
     @IBOutlet weak var mostMilesInADayLabel: UILabel!
     
+    var userStats = UserStats()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        numStationsTodayLabel.text = "You went to \(userStats.numStationsToday) Divvy stations Today"
+        mostStationsInADayLabel.text = "Most Stations Visited in a Day: \(userStats.mostStationsInADay)"
+        numMilesTodayLabel.text = "You rode for \(userStats.numMilesToday) Miles today"
+        mostMilesInADayLabel.text = "Most Miles Ridden in a Day: \(userStats.mostMilesInADay)"
     }
 
     override func didReceiveMemoryWarning() {

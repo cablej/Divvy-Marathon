@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var testTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
+    var userStats = UserStats()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         StyleHelper.initializeViewController(self)
         UIApplication.sharedApplication().statusBarStyle = .LightContent //white status bar
         
@@ -25,10 +26,15 @@ class ViewController: UIViewController {
         if let dvc = segue.destinationViewController as? LocationViewController {
             
             let seconds = tripLengthInSeconds()
-            
+            dvc.userStats = userStats
             dvc.tripLengthInSeconds = seconds
-            
         }
+        if let dvc = segue.destinationViewController as? UserStatsViewController {
+            
+            let seconds = tripLengthInSeconds()
+            dvc.userStats = userStats
+        }
+
     }
     
     /**

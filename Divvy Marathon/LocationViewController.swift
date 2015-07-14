@@ -22,6 +22,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     @IBOutlet var mapView: MKMapView!
     
     var tripLengthInSeconds = 0.0
+    var tripLengthInMiles = 0.0
     
     var locationManager : CLLocationManager!
     var stations: [Station] = []
@@ -30,9 +31,12 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var currentStationIndex = 0
     var routeStations: [Station] = []
     var numBikesOnThisRide = 0
+    var userStats = UserStats()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //testing
+        print(userStats.numMilesToday)
         
         initializeLocation()
         
@@ -65,7 +69,14 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         
+        if routeStations.count>=2{
+            for i in 0...routeStations.count-2 {
+                tripLengthInMiles += distanceBetweenTwoCoordinates(routeStations[i].coordinate, coordinate2: routeStations[i+1].coordinate)
+        
+            }
+        }
         print("Seconds: " + String(tripLengthInSeconds))
+        userStats.numStationsToday += routeStations.count
         
     }
     
@@ -144,6 +155,12 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     func distanceToCoordinate(coordinate: CLLocationCoordinate2D) -> Double {
         let distance = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).distanceFromLocation(currentLocation)
+        let miles = metersToMiles(distance)
+        return miles
+    }
+    
+    func distanceBetweenTwoCoordinates(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Double {
+        let distance = CLLocation(latitude: coordinate1.latitude, longitude: coordinate2.longitude).distanceFromLocation(CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude))
         let miles = metersToMiles(distance)
         return miles
     }

@@ -8,14 +8,17 @@
 
 import UIKit
 
+
 class UserStats: NSObject {
-    var numStationsToday = 0
-    var mostStationsInADay = 0
-    var numMilesToday = 0
-    var mostMilesInADay = 0
-    var sprints: [Sprint] = []
-    var fastestSprints: [Sprint] = []
-    
+    var numStationsToday: Int = 0
+    var mostStationsInADay: Int = 0
+    var numMilesToday: Double = 0.0
+    var mostMilesInADay: Double = 0.0
+    var currentDate = NSDate()
+   
+    //var sprints: [Sprint]
+    //var fastestSprints: [Sprint]
+    /*
     func findFastestSprints() {
         for sprint in sprints {
             var fastestSprintsContainsATimeForThisSprint = false
@@ -34,5 +37,5 @@ class UserStats: NSObject {
             }
         }
     }
-  
+    */
 }

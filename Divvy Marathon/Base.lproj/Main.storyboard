@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HJO-rU-Wqu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IkF-xc-8mt">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your Stats:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-n6-3tu">
@@ -82,13 +82,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mostBikesInADay" destination="5np-Zy-IQj" id="3Vi-YO-gsB"/>
-                        <outlet property="mostMilesInADay" destination="Q5K-QL-ZN8" id="Bf5-Af-AVS"/>
                         <outlet property="mostMilesInADayLabel" destination="Q5K-QL-ZN8" id="Rke-jx-TA5"/>
                         <outlet property="mostStationsInADayLabel" destination="5np-Zy-IQj" id="ePR-mc-j5E"/>
-                        <outlet property="numMilesToday" destination="4yQ-nK-ghN" id="Ecn-YH-QXY"/>
                         <outlet property="numMilesTodayLabel" destination="4yQ-nK-ghN" id="VwU-Qw-9Go"/>
-                        <outlet property="numStationsToday" destination="pab-Vg-bdG" id="c75-9U-lOo"/>
                         <outlet property="numStationsTodayLabel" destination="pab-Vg-bdG" id="8cp-dC-gaa"/>
                     </connections>
                 </viewController>
@@ -105,10 +101,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-nd-6If">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-nd-6If">
                                 <rect key="frame" x="0.0" y="476" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.72156862745098038" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -201,7 +197,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jIB-P0-VaP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w2D-t2-N2V">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6L-Q6-qUE">
@@ -220,7 +216,7 @@
                                 <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIm-WJ-ewP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIm-WJ-ewP">
                                 <rect key="frame" x="0.0" y="476" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.72156862749999995" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -335,7 +331,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LWR-R6-DC0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZIh-Ch-bYV">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
