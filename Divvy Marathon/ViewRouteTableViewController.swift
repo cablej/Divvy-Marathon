@@ -16,7 +16,7 @@ class ViewRouteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.contentInset = UIEdgeInsetsMake(70,0,0,0);
+        //tableView.contentInset = UIEdgeInsetsMake(70,0,0,0);
         
         tableView.backgroundColor = UIColor.whiteColor()
         
