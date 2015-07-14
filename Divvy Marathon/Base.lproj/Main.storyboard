@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--User Stats View Controller-->
         <scene sceneID="hDi-ct-fwy">
             <objects>
-                <viewController id="DyK-fy-wAp" sceneMemberID="viewController">
+                <viewController id="DyK-fy-wAp" customClass="UserStatsViewController" customModule="Divvy_Marathon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VF4-fa-wKY"/>
                         <viewControllerLayoutGuide type="bottom" id="HJO-rU-Wqu"/>
@@ -81,6 +81,16 @@
                             <constraint firstItem="5np-Zy-IQj" firstAttribute="top" secondItem="pab-Vg-bdG" secondAttribute="bottom" constant="8" id="zy4-uO-K3P"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mostBikesInADay" destination="5np-Zy-IQj" id="3Vi-YO-gsB"/>
+                        <outlet property="mostMilesInADay" destination="Q5K-QL-ZN8" id="Bf5-Af-AVS"/>
+                        <outlet property="mostMilesInADayLabel" destination="Q5K-QL-ZN8" id="Rke-jx-TA5"/>
+                        <outlet property="mostStationsInADayLabel" destination="5np-Zy-IQj" id="ePR-mc-j5E"/>
+                        <outlet property="numMilesToday" destination="4yQ-nK-ghN" id="Ecn-YH-QXY"/>
+                        <outlet property="numMilesTodayLabel" destination="4yQ-nK-ghN" id="VwU-Qw-9Go"/>
+                        <outlet property="numStationsToday" destination="pab-Vg-bdG" id="c75-9U-lOo"/>
+                        <outlet property="numStationsTodayLabel" destination="pab-Vg-bdG" id="8cp-dC-gaa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKR-4H-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,7 +393,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4gh-P1-4F0" id="Tk2-I0-Z7u">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a left on sample road" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-kl-4S1">

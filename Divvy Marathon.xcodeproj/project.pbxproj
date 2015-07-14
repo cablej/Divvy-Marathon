@@ -25,6 +25,9 @@
 		D1C913C51B52F22D003FFFD3 /* ViewRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */; };
 		D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */; };
 		DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F75291B544850007D650C /* LogInViewController.swift */; };
+		DAE18B831B55691F00403CC2 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */; };
+		DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B841B556BE700403CC2 /* UserStats.swift */; };
+		DAE18B871B556C8400403CC2 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B861B556C8400403CC2 /* Sprint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouteTableViewController.swift; sourceTree = "<group>"; };
 		D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepTableViewCell.swift; sourceTree = "<group>"; };
 		DA7F75291B544850007D650C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
+		DAE18B841B556BE700403CC2 /* UserStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
+		DAE18B861B556C8400403CC2 /* Sprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sprint.swift; path = ../Sprint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,8 @@
 		D108B1AE1B50586500866503 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				DAE18B861B556C8400403CC2 /* Sprint.swift */,
+				DAE18B841B556BE700403CC2 /* UserStats.swift */,
 				D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */,
 				D15875801B5035B600B44588 /* Station.swift */,
 				D10E02E51B54084400C57F51 /* RouteCoordinate.swift */,
@@ -125,6 +133,7 @@
 				D15875541B502E3900B44588 /* ViewController.swift */,
 				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
 				D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */,
+				DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -319,11 +328,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */,
+				DAE18B871B556C8400403CC2 /* Sprint.swift in Sources */,
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */,
 				DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */,
 				D108B1B31B5066AD00866503 /* DataManager.swift in Sources */,
 				D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */,
+				DAE18B831B55691F00403CC2 /* UserStatsViewController.swift in Sources */,
 				D15875811B5035B600B44588 /* Station.swift in Sources */,
 				D15875531B502E3900B44588 /* AppDelegate.swift in Sources */,
 				D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */,
