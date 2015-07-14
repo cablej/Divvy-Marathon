@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+<<<<<<< HEAD
+=======
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/development
+>>>>>>> Stashed changes
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,41 +24,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2015 Jack Cable &amp; Julianne Knott. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="20" y="559" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Divvy Logo" translatesAutoresizingMaskIntoConstraints="NO" id="l5q-Oa-xjq">
-                                <rect key="frame" x="20" y="167" width="560" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="final_logo_2_black" translatesAutoresizingMaskIntoConstraints="NO" id="ipM-Be-h0X">
+                                <rect key="frame" x="150" y="145" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="4cA-rx-3Ct"/>
+                                    <constraint firstAttribute="width" constant="300" id="Ukc-Ck-7Uu"/>
+                                    <constraint firstAttribute="height" constant="300" id="rUv-zb-lkI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MARATHON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQF-v1-4xA">
-                                <rect key="frame" x="20" y="303" width="560" height="94"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="94" id="5Ty-QI-7Dp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="38"/>
-                                <color key="textColor" red="0.26666666666666666" green="0.70588235294117652" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.18823529411764706" green="0.1764705882352941" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="4qa-r8-tiy"/>
-                            <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="l5q-Oa-xjq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="JSI-a2-bzj"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="Opt-jz-PQW"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="BQF-v1-4xA" firstAttribute="top" secondItem="l5q-Oa-xjq" secondAttribute="bottom" constant="8" id="aqz-95-nJ2"/>
-                            <constraint firstItem="BQF-v1-4xA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="pVq-9C-YdA"/>
-                            <constraint firstItem="BQF-v1-4xA" firstAttribute="top" secondItem="l5q-Oa-xjq" secondAttribute="bottom" constant="8" id="rPZ-6s-wZF"/>
-                            <constraint firstItem="l5q-Oa-xjq" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="tee-pX-ZYr"/>
-                            <constraint firstItem="BQF-v1-4xA" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="tkJ-IH-PdW"/>
+                            <constraint firstItem="ipM-Be-h0X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0vt-l8-580"/>
+                            <constraint firstItem="ipM-Be-h0X" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4kq-tc-gRe"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -62,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Divvy Logo" width="2000" height="571"/>
+        <image name="final_logo_2_black" width="1024" height="1024"/>
     </resources>
 </document>

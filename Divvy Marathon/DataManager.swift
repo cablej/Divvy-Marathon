@@ -11,6 +11,7 @@ import CoreLocation
 
 let DIVVY_JSON_URL = "http://www.divvybikes.com/stations/json"
 let ROUTE_URL = "http://tiphound.me/Divvy-Marathon/generateRoute.php"
+let REQUEST_URL = "http://tiphound.me/Divvy-Marathon/request.php"
 
 class DataManager: NSObject {
     
@@ -54,26 +55,12 @@ class DataManager: NSObject {
     
     class func getRoute(seconds: Double, startStation: Station, success: ((routeStations: [Station]!) -> Void)) {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: ROUTE_URL)!)
-        
         let postString = "seconds=\(seconds)&startingStation=\(startStation.id)"
         
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        var responseString = ""
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
+        sendRequest(ROUTE_URL, postString: postString)  {
+            response in
             
-            if(error != nil) {
-                print("error=\(error)")
-                return
-            }
-            
-            responseString = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-            
-            if let routeJSON = stringToJSON(responseString) {
+            if let routeJSON = stringToJSON(response) {
                 
                 var routeStations : [Station] = []
                 
@@ -91,11 +78,33 @@ class DataManager: NSObject {
                 
                 success(routeStations: routeStations)
             }
+        }
+    }
+    
+    class func sendRequest(url: String, postString: String, completionHandler : (String) -> ()){
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        var responseString = ""
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if(error != nil) {
+                print("error=\(error)")
+                return
+            }
+            
+            responseString = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+            
+            completionHandler(responseString)
             
         }
         
         task?.resume()
     }
+
     
     class func stringToJSON(string: String) -> JSON? { //returns a JSON object of the given string
         let jsonObject : AnyObject?
@@ -108,4 +117,41 @@ class DataManager: NSObject {
         } catch {}
         return nil;
     }
+    
+    class func saveUserInformation(information: String) {
+        if let json = stringToJSON(information) {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            let key = json["key"].stringValue
+            
+            let username = json["username"].stringValue
+            
+            userDefaults.setObject(key, forKey: "key")
+            userDefaults.setObject(username, forKey: "username")
+        }
+    }
+    
+    class func getKey() -> String? {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let key = userDefaults.objectForKey("key") as? String
+        return key == "" ? nil : key
+    }
+    
+    class func getUsername() -> String? {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let username = userDefaults.objectForKey("username") as? String
+        return username == "" ? nil : username
+    }
+    
+    class func error(response: String) -> String? {
+        if let json = stringToJSON(response) {
+            let error = json["error"].stringValue
+            
+            if(error != "") {
+                return error
+            }
+        }
+        return nil
+    }
+
 }

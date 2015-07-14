@@ -30,7 +30,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var currentStationIndex = 0
     var routeStations: [Station] = []
     var numBikesOnThisRide = 0
-    var isAtStation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,14 +178,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         let location : CLLocationCoordinate2D = manager.location!.coordinate
         currentLocation = manager.location!
         if userIsNearNextStation() {
-            if !isAtStation {
-                self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
-                numBikesOnThisRide++
-                if(currentStationIndex < routeStations.count - 1) {
-                    currentStationIndex++
-                }
-            } else {
-                isAtStation = false
+            self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
+            numBikesOnThisRide++
+            if(currentStationIndex < routeStations.count - 1) {
+                currentStationIndex++
             }
         }
         
