@@ -12,14 +12,35 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var testTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+<<<<<<< Updated upstream
     var userStats = UserStats()
         
+=======
+<<<<<<< HEAD
+    @IBOutlet var usernameLabel: UILabel!
+    
+    @IBOutlet var logInButton: UIBarButtonItem!
+    
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+=======
+    var userStats = UserStats()
+        
+>>>>>>> origin/development
+>>>>>>> Stashed changes
     override func viewDidLoad() {
         super.viewDidLoad()
         StyleHelper.initializeViewController(self)
         UIApplication.sharedApplication().statusBarStyle = .LightContent //white status bar
         
         datePicker.countDownDuration = 30*60 //set to 30 minutes default
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if let username = DataManager.getUsername() {
+            logInButton.title = "Log out"
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -33,6 +54,20 @@ class ViewController: UIViewController {
             
             let seconds = tripLengthInSeconds()
             dvc.userStats = userStats
+<<<<<<< Updated upstream
+=======
+        }
+
+    }
+    
+    @IBAction func onLogInButtonTapped(sender: AnyObject) {
+        if let username = DataManager.getUsername() {
+            userDefaults.setObject("", forKey: "key")
+            userDefaults.setObject("", forKey: "username")
+            logInButton.title = "Log in"
+        } else {
+            performSegueWithIdentifier("SignIn", sender: self)
+>>>>>>> Stashed changes
         }
 
     }

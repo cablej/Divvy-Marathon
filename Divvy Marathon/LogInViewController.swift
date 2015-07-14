@@ -17,9 +17,11 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var signUpPassword: UITextField!
     @IBOutlet var signUpConfirmPassword: UITextField!
     
+    @IBOutlet var messageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StyleHelper.initializeViewController(self)
     }
     
     
@@ -38,14 +40,12 @@ class LogInViewController: UIViewController {
                 message = error
             } else {
                 DataManager.saveUserInformation(response)
-                //self.dismissView()
+                self.dismissView()
             }
             
-            print(message)
-            
-            /*dispatch_async(dispatch_get_main_queue()) {
+            dispatch_async(dispatch_get_main_queue()) {
                 self.messageLabel.text = message
-            }*/
+            }
             
         }
         
@@ -66,14 +66,13 @@ class LogInViewController: UIViewController {
                     message = error
                 } else {
                     DataManager.saveUserInformation(response)
-                    //self.dismissView()
+                    self.dismissView()
                 }
                 
-                print(message)
                 
-                /*dispatch_async(dispatch_get_main_queue()) {
+                dispatch_async(dispatch_get_main_queue()) {
                     self.messageLabel.text = message
-                }*/
+                }
             }
             
         } else {
@@ -86,6 +85,18 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onCancelButtonTapped(sender: AnyObject) {
+        dismissView()
+    }
+    
+    func dismissView() {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: {
+            let secondPresentingVC = self.presentingViewController?.presentingViewController;
+            secondPresentingVC?.dismissViewControllerAnimated(true, completion: {})
+        })
+    }
+
     
 
 }
