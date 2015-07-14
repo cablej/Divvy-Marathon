@@ -3,13 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
-<<<<<<< HEAD
-=======
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/development
->>>>>>> Stashed changes
     </dependencies>
     <scenes>
         <!--View Controller-->
