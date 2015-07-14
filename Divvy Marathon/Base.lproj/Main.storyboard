@@ -104,16 +104,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-nd-6If">
-                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
-=======
->>>>>>> Stashed changes
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-nd-6If">
                                 <rect key="frame" x="0.0" y="476" width="600" height="60"/>
->>>>>>> origin/development
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.72156862745098038" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vWm-KW-Fic"/>
@@ -210,8 +202,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-=======
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6L-Q6-qUE">
                                 <rect key="frame" x="224" y="250" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
@@ -220,18 +210,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text=" Log in! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc2-8H-1kS">
-                                <rect key="frame" x="268" y="221" width="61" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/development
->>>>>>> Stashed changes
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIm-WJ-ewP">
                                 <rect key="frame" x="0.0" y="476" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.72156862749999995" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -246,14 +224,6 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="jAi-kJ-uhq"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6L-Q6-qUE">
-                                <rect key="frame" x="224" y="233" width="150" height="30"/>
-                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.22745098039215686" green="0.66274509803921566" blue="0.85882352941176465" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5LH-0f-g39">
                                 <rect key="frame" x="224" y="77" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
@@ -261,14 +231,6 @@
                                 <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tz0-ph-38t">
-                                <rect key="frame" x="224" y="271" width="150" height="30"/>
-                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67x-KG-IFz">
                                 <rect key="frame" x="276" y="191" width="52" height="30"/>
@@ -280,7 +242,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da3-13-m1u">
-                                <rect key="frame" x="277" y="309" width="42" height="30"/>
+                                <rect key="frame" x="277" y="326" width="42" height="30"/>
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" red="0.27058823529999998" green="0.72156862749999995" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -310,6 +272,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tz0-ph-38t">
+                                <rect key="frame" x="224" y="288" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.2274509804" green="0.66274509800000003" blue="0.85882352939999995" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.095824537050000005" green="0.51394754109999996" blue="0.81155303030000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

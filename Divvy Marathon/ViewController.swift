@@ -12,22 +12,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var testTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-<<<<<<< Updated upstream
-    var userStats = UserStats()
-        
-=======
-<<<<<<< HEAD
+    
     @IBOutlet var usernameLabel: UILabel!
     
     @IBOutlet var logInButton: UIBarButtonItem!
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
-=======
     var userStats = UserStats()
-        
->>>>>>> origin/development
->>>>>>> Stashed changes
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         StyleHelper.initializeViewController(self)
@@ -54,8 +47,6 @@ class ViewController: UIViewController {
             
             let seconds = tripLengthInSeconds()
             dvc.userStats = userStats
-<<<<<<< Updated upstream
-=======
         }
 
     }
@@ -67,7 +58,6 @@ class ViewController: UIViewController {
             logInButton.title = "Log in"
         } else {
             performSegueWithIdentifier("SignIn", sender: self)
->>>>>>> Stashed changes
         }
 
     }
