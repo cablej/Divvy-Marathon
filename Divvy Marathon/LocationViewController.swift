@@ -16,14 +16,12 @@ import CoreLocation
 class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet var messageLabel: UILabel!
-    let METER_TO_MILE = 1609.344 //conversion from meters to miles
-    let MILE_TO_FEET = 5280.0 //converstion from mile to feet
-    
     @IBOutlet var mapView: MKMapView!
     
+    let METER_TO_MILE = 1609.344 //conversion from meters to miles
+    let MILE_TO_FEET = 5280.0 //converstion from mile to feet
     var tripLengthInSeconds = 0.0
     var tripLengthInMiles = 0.0
-    
     var locationManager : CLLocationManager!
     var stations: [Station] = []
     var currentLocation: CLLocation = CLLocation()
@@ -32,12 +30,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     var routeStations: [Station] = []
     var numBikesOnThisRide = 0
     var userStats = UserStats()
+    var typeOfRide = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //testing
-        print(userStats.numMilesToday)
-        
         initializeLocation()
         
         DataManager.getDivvyBikeData { (stationsArray) -> Void in
@@ -52,7 +48,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 print(location)
                 
                 self.displayFullRoute()
-                DataManager.getRoute(self.tripLengthInSeconds, startStation: location, success: { (routeStations) -> Void in
+                DataManager.getRoute(self.tripLengthInSeconds, startStation: location, routeType: self.typeOfRide, success: { (routeStations) -> Void in
                     
                     for station in routeStations {
                         self.addPin(station.coordinate, title: station.name)
@@ -61,11 +57,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     self.routeStations += routeStations
                     self.displayFullRoute()
                 })
-                
-                
-                //self.displayWalkingDirections(location)
-                //self.displayDirectionsBetweenCoordinates
-                //self.findNearbyStations()
             }
         }
         
@@ -93,9 +84,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
             }
         }
-        /*for i in 0...routeStations.count - 2 {
-            displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: routeStations[i].coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[i+1].coordinate, addressDictionary: nil))
-        }*/
     }
     
     func displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark, endCoordinate: MKPlacemark) {

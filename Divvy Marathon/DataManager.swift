@@ -13,6 +13,8 @@ let DIVVY_JSON_URL = "http://www.divvybikes.com/stations/json"
 let ROUTE_URL = "http://tiphound.me/Divvy-Marathon/generateRoute.php"
 let REQUEST_URL = "http://tiphound.me/Divvy-Marathon/request.php"
 
+var lakeFrontStationNames: [String] = ["Sheridan Rd & Greenleaf Ave", "Sheridan Rd & Loyola Ave", "Broadway & Granville Ave", "Broadway & Thorndale Ave", "Lakefront Trail & Bryn Mawr Ave", "Clarendon Ave & Leland Ave", "Montrose Harbor", "Clarendon Ave & Junior Ter", "Clarendon Ave & Gordon Ter", "Pine Grove Ave & Irving Park Rd", "Pine Grove Ave & Waveland Ave", "Lake Shore Dr & Belmont Ave", "Lake Shore Dr & Wellington Ave", "Lake Shore Dr & Diversey Pkwy", "Stockton Dr & Wrightwood Ave", "Theater On The Lake", "Cannon Dr & Fullerton Ave", "Lakeview Ave & Fullerton Pkwy", "Clark St & Armitage Ave", "Clark St & Lincoln Ave", "Clark St & North Ave", "Lake Shore Dr & North Blvd", "Ritchie Ct & Banks St", "Michigan Ave & Oak St", "Michigan Ave & Oak St", "Lake Shore Dr & Ohio St", "Streeter Dr & Illinois St", "Dusable Harbor", "Lake Shore Dr & Monroe St", "Michigan Ave & Madison St", "Millennium Park", "Wabash Ave & Adams St", "Michigan Ave & Jackson Blvd", "Michigan Ave & Congress Pkwy", "Michigan Ave & Balbo Ave", "Indiana Ave & Roosevelt Rd", "Shedd Aquarium", "Museum Campus", "Adler Planetarium", "Burnham Harbor", "Fort Dearborn Dr & 31st St", "Lake Park Ave & 35th St", "Cottage grove Ave & Oakwood Blvd", "Woodlawn Ave & Lake Park Ave", "Lake Park Ave & 47th St", "Cornell Ave & Hyde Park Blvd", "Lake Park Ave & 53rd St", "Shore Dr & 55th St", "Museum of Science and Industry", "63rd St Beach", "Stony Island Ave & 64th St", "Stony Island Ave & 67th St", "Jeffery Blvd & 67th St", "South Shore Dr & 67th St", "South Shore Dr & 71st St", "South Shore Dr & 74th St", "Rainbow Beach"]
+
 class DataManager: NSObject {
     
     class func getDivvyBikeData(success: ((stationsArray: [Station]!) -> Void)) {
@@ -53,7 +55,13 @@ class DataManager: NSObject {
         
     }
     
-    class func getRoute(seconds: Double, startStation: Station, success: ((routeStations: [Station]!) -> Void)) {
+    /**
+        calculates a route based on the time the user wants to bike for, the users starting location, and the type of ride the user would like to go on
+        ride types:
+        0 : basic crazy route
+        1 : lakeFront crazy route
+    **/
+    class func getRoute(seconds: Double, startStation: Station, routeType: Int, success: ((routeStations: [Station]!) -> Void)) {
         
         let postString = "seconds=\(seconds)&startingStation=\(startStation.id)"
         
@@ -70,10 +78,16 @@ class DataManager: NSObject {
                     let id = stationJSON.1["station"]["id"].stringValue
                     let latitude = stationJSON.1["station"]["latitude"].doubleValue
                     let longitude = stationJSON.1["station"]["longitude"].doubleValue
-                    
-                    let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
-                    routeStations.append(station)
-                    
+                    if routeType == 0 {
+                        let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
+                        routeStations.append(station)
+                    }
+                    else if routeType == 1 {
+                        if lakeFrontStationNames.contains(name){
+                            let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
+                            routeStations.append(station)
+                        }
+                    }
                 }
                 
                 success(routeStations: routeStations)

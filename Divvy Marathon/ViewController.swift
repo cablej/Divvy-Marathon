@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let username = DataManager.getUsername() {
+        if let _ = DataManager.getUsername() {
             logInButton.title = "Log out"
         }
     }
