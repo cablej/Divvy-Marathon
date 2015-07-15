@@ -60,8 +60,11 @@ class DataManager: NSObject {
     /**
         calculates a route based on the time the user wants to bike for, the users starting location, and the type of ride the user would like to go on
         ride types:
+        0 : basic crazy route
+        1 : lakefront
+        ...to be continued...
     **/
-    class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, success: ((routeStations: [Station]!) -> Void)) {
+    class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, typeOfRide: Int, success: ((routeStations: [Station]!) -> Void)) {
         
         let postString = "seconds=\(seconds)&startingStation=\(startStation.id)&minTim=\(stressLevel)"
         
@@ -79,7 +82,13 @@ class DataManager: NSObject {
                     let latitude = stationJSON.1["station"]["latitude"].doubleValue
                     let longitude = stationJSON.1["station"]["longitude"].doubleValue
                     let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
-                    routeStations.append(station)
+                    if typeOfRide == 1{
+                        if lakeFrontStationNames.contains(name){
+                            routeStations.append(station)
+                        }
+                    } else {
+                        routeStations.append(station)
+                    }
                 }
                 
                 success(routeStations: routeStations)
