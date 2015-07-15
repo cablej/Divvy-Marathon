@@ -37,7 +37,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeLocation()
-        finalLocationTextField.hidden = true
+        
+        if typeOfRide != 2 {
+            finalLocationTextField.hidden = true
+        }
         
         DataManager.getDivvyBikeData { (stationsArray) -> Void in
             if let tempStations = stationsArray {
@@ -74,8 +77,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                         self.processRoute(routeStations)
                     })
                     
-                } else if self.typeOfRide == 2{
-                    self.finalLocationTextField.hidden = false
                 } else {
                     
                     DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, typeOfRide: self.typeOfRide, success: { (routeStations) -> Void in
@@ -98,6 +99,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func processRoute(stationsToProccess: [Station]) {
+        mapView.removeAnnotations(mapView.annotations)
         for station in stationsToProccess {
             self.addPin(station.coordinate, title: station.name)
         }
@@ -116,6 +118,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         displays the whole bike route to the user
     **/
     func displayFullRoute() {
+        mapView.removeOverlays(mapView.overlays)
         displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[0].coordinate, addressDictionary: nil))
         if routeStations.count >= 2 {
             for i in 0...routeStations.count - 2 {
@@ -314,6 +317,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        routeStations = []
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(textField.text!, completionHandler:
             {placemarks, error in
