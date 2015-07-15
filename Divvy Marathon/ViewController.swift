@@ -66,7 +66,6 @@ class ViewController: UIViewController {
         returns the trip length, in seconds, from the value of the date picker
     **/
     func tripLengthInSeconds() -> Double {
-        print(datePicker.countDownDuration)
         print(String(Double(datePicker.countDownDuration)))
         return Double(datePicker.countDownDuration) //all that parsing was for nothing...
     }

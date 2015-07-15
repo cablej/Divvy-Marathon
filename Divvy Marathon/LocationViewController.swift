@@ -192,11 +192,18 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
-        let location : CLLocationCoordinate2D = manager.location!.coordinate
-        currentLocation = manager.location!
+        
         if userIsNearNextStation() {
             self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
             numBikesOnThisRide++
+            
+            if(currentStationIndex >= 1) { //not starting point
+                
+                let miles = distanceBetweenTwoCoordinates(routeStations[currentStationIndex].coordinate, coordinate2: routeStations[currentStationIndex-1].coordinate)
+                
+                DataManager.hitStation(miles)
+            }
+            
             if(currentStationIndex < routeStations.count - 1) {
                 currentStationIndex++
             }
@@ -213,7 +220,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {
         let distanceMiles = distanceToCoordinate(coordinate)
         let distanceFeet = distanceMiles * MILE_TO_FEET
-        return distanceFeet <= 50
+        return distanceFeet <= 100
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

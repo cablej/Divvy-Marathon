@@ -20,6 +20,7 @@
 		D15875811B5035B600B44588 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875801B5035B600B44588 /* Station.swift */; };
 		D15875831B50375300B44588 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15875821B50375300B44588 /* MapKit.framework */; };
 		D171D81C1B568F43006271BB /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171D81B1B568F43006271BB /* LeaderboardTableViewController.swift */; };
+		D171D81E1B56A8FE006271BB /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */; };
 		D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18812681B50392A00B1C5FE /* LocationViewController.swift */; };
 		D188126B1B50473200B1C5FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D188126A1B50473200B1C5FE /* CoreLocation.framework */; };
 		D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F37C21B52E43000367AAC /* StyleHelper.swift */; };
@@ -68,6 +69,7 @@
 		D15875801B5035B600B44588 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		D15875821B50375300B44588 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D171D81B1B568F43006271BB /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
+		D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		D18812681B50392A00B1C5FE /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D188126A1B50473200B1C5FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D18F37C21B52E43000367AAC /* StyleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleHelper.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */,
 				D15875801B5035B600B44588 /* Station.swift */,
 				D10E02E51B54084400C57F51 /* RouteCoordinate.swift */,
+				D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				DAE18B871B556C8400403CC2 /* Sprint.swift in Sources */,
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */,
+				D171D81E1B56A8FE006271BB /* UserTableViewCell.swift in Sources */,
 				DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */,
 				D171D81C1B568F43006271BB /* LeaderboardTableViewController.swift in Sources */,
 				D108B1B31B5066AD00866503 /* DataManager.swift in Sources */,

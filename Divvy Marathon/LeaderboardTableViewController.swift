@@ -11,6 +11,7 @@ import UIKit
 class LeaderboardTableViewController: UITableViewController {
 
     var type = "totalMiles"
+    var users : [JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,31 @@ class LeaderboardTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor.whiteColor()
         
         print(type)
+        
+        
+        let postString = "action=Leaderboard&type=\(type)"
+        
+        DataManager.sendRequest(REQUEST_URL, postString: postString ) {
+            response in
+            
+            if let error = DataManager.error(response) {
+                print(error)
+            }
+            
+            if let json = DataManager.stringToJSON(response) {
+                
+                for userJSON in json {
+                    
+                    self.users.append(userJSON.1)
+                    
+                }
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,19 +58,19 @@ class LeaderboardTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserTableViewCell
 
-        // Configure the cell...
+        cell.usernameLabel.text = users[indexPath.row]["username"].stringValue
+        cell.scoreLabel.text = users[indexPath.row][type].stringValue
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

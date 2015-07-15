@@ -36,6 +36,8 @@ class UserStatsViewController: UIViewController {
                     print(error)
                 }
                 
+                print(response);
+                
                 if let json = DataManager.stringToJSON(response) {
                     
                     let miles = json["totalMiles"].doubleValue
@@ -53,7 +55,11 @@ class UserStatsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dvc = segue.destinationViewController as? LeaderboardTableViewController {
-            dvc.type = (sender?.title!)!
+            if(sender!.tag == 1) {
+                dvc.type = "totalStations"
+            } else {
+                dvc.type = "totalMiles"
+            }
         }
     }
 
