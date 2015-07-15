@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         if let _ = DataManager.getUsername() {
             logInButton.title = "Log out"
+        } else {
+            logInButton.title = "Log in"
         }
     }
     

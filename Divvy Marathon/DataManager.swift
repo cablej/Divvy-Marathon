@@ -159,22 +159,26 @@ class DataManager: NSObject {
     
     class func hitStation(miles: Double) {
         
-        let postString = "action=HitStation&key=\(getKey())&miles=\(miles)"
-        
-        DataManager.sendRequest(REQUEST_URL, postString: postString ) {
-            response in
+        if let key = getKey() {
             
-            var message = "Successfully updated."
+            let postString = "action=HitStation&key=\(key)&miles=\(miles)"
             
-            if let error = DataManager.error(response) {
-                message = error
-            } else {
-                DataManager.saveUserInformation(response)
+            DataManager.sendRequest(REQUEST_URL, postString: postString ) {
+                response in
+                
+                var message = "Successfully updated."
+                
+                if let error = DataManager.error(response) {
+                    message = error
+                } else {
+                    DataManager.saveUserInformation(response)
+                }
+                
+                print(message)
+                
             }
-            
-            print(message)
-            
         }
+        
     }
     
     class func error(response: String) -> String? {

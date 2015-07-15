@@ -25,6 +25,7 @@ class UserStatsViewController: UIViewController {
     }
     
     func loadStats() {
+        print(DataManager.getKey())
         if let key = DataManager.getKey() {
             
             let postString = "action=UserStats&key=\(key)"

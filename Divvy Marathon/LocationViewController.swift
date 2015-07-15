@@ -181,6 +181,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
         
+        let location : CLLocationCoordinate2D = manager.location!.coordinate
+        currentLocation = manager.location!
+        
         if userIsNearNextStation() {
             self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
             numBikesOnThisRide++
@@ -202,7 +205,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func userIsNearNextStation() -> Bool {
         if routeStations.isEmpty { return false }
         let nextStation = routeStations[currentStationIndex]
-        return userIsNearCoordinate(nextStation.coordinate)
+        return true//userIsNearCoordinate(nextStation.coordinate)
     }
     
     func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {
