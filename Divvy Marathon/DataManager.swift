@@ -82,13 +82,7 @@ class DataManager: NSObject {
                     let latitude = stationJSON.1["station"]["latitude"].doubleValue
                     let longitude = stationJSON.1["station"]["longitude"].doubleValue
                     let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
-                    if typeOfRide == 1{
-                        if lakeFrontStationNames.contains(name){
-                            routeStations.append(station)
-                        }
-                    } else {
                         routeStations.append(station)
-                    }
                 }
                 
                 success(routeStations: routeStations)

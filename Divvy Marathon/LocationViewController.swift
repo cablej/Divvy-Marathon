@@ -57,7 +57,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 
                 if self.typeOfRide == 1 {
-                    /*
+                    
                     var destiStations : [Station] = [location]
                     
                     for name in lakeFrontStationNames {
@@ -71,11 +71,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     }
                     
                     self.processRoute(destiStations)
-                    */
-                    
-                    DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, typeOfRide: self.typeOfRide, success: { (routeStations) -> Void in
-                        self.processRoute(routeStations)
-                    })
                     
                 } else {
                     
