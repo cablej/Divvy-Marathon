@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var rideTypeSegmentedControl: UISegmentedControl!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var logInButton: UIBarButtonItem!
+    @IBOutlet var stressLevelSlider: UISlider!
+    
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var userStats = UserStats()
@@ -42,6 +44,8 @@ class ViewController: UIViewController {
             dvc.userStats = userStats
             dvc.tripLengthInSeconds = seconds
             dvc.typeOfRide = self.rideTypeSegmentedControl.selectedSegmentIndex
+            let stressLevel : Double = (1.0 - Double(stressLevelSlider.value))*20.0
+            dvc.stressLevel = stressLevel
         }
         if let dvc = segue.destinationViewController as? UserStatsViewController {
             dvc.userStats = userStats

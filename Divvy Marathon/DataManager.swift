@@ -61,9 +61,9 @@ class DataManager: NSObject {
         0 : basic crazy route
         1 : lakeFront crazy route
     **/
-    class func getRoute(seconds: Double, startStation: Station, routeType: Int, success: ((routeStations: [Station]!) -> Void)) {
+    class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, success: ((routeStations: [Station]!) -> Void)) {
         
-        let postString = "seconds=\(seconds)&startingStation=\(startStation.id)"
+        let postString = "seconds=\(seconds)&startingStation=\(startStation.id)&minTim=\(stressLevel)"
         
         sendRequest(ROUTE_URL, postString: postString)  {
             response in
@@ -78,16 +78,8 @@ class DataManager: NSObject {
                     let id = stationJSON.1["station"]["id"].stringValue
                     let latitude = stationJSON.1["station"]["latitude"].doubleValue
                     let longitude = stationJSON.1["station"]["longitude"].doubleValue
-                    if routeType == 0 {
-                        let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
-                        routeStations.append(station)
-                    }
-                    else if routeType == 1 {
-                        if lakeFrontStationNames.contains(name){
-                            let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
-                            routeStations.append(station)
-                        }
-                    }
+                    let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
+                    routeStations.append(station)
                 }
                 
                 success(routeStations: routeStations)

@@ -22,6 +22,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     let MILE_TO_FEET = 5280.0 //converstion from mile to feet
     var tripLengthInSeconds = 0.0
     var tripLengthInMiles = 0.0
+    var stressLevel = 0.0
     var locationManager : CLLocationManager!
     var stations: [Station] = []
     var currentLocation: CLLocation = CLLocation()
@@ -48,15 +49,31 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 print(location)
                 
                 self.displayFullRoute()
-                DataManager.getRoute(self.tripLengthInSeconds, startStation: location, routeType: self.typeOfRide, success: { (routeStations) -> Void in
+                
+                
+                if self.typeOfRide == 1 {
                     
-                    for station in routeStations {
-                        self.addPin(station.coordinate, title: station.name)
+                    var destiStations : [Station] = [location]
+                    
+                    for name in lakeFrontStationNames {
+                        
+                        for station in self.stations {
+                            if station.name == name {
+                                destiStations.append(station)
+                                break;
+                            }
+                        }
                     }
                     
-                    self.routeStations += routeStations
-                    self.displayFullRoute()
-                })
+                    self.processRoute(destiStations)
+                    
+                } else {
+                    
+                    DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, success: { (routeStations) -> Void in
+                        self.processRoute(routeStations)
+                    })
+
+                }
             }
         }
         
@@ -69,6 +86,15 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         print("Seconds: " + String(tripLengthInSeconds))
         userStats.numStationsToday += routeStations.count
         
+    }
+    
+    func processRoute(stationsToProccess: [Station]) {
+        for station in stationsToProccess {
+            self.addPin(station.coordinate, title: station.name)
+        }
+        
+        self.routeStations += stationsToProccess
+        self.displayFullRoute()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -205,7 +231,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func userIsNearNextStation() -> Bool {
         if routeStations.isEmpty { return false }
         let nextStation = routeStations[currentStationIndex]
-        return true//userIsNearCoordinate(nextStation.coordinate)
+        return userIsNearCoordinate(nextStation.coordinate)
     }
     
     func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {
