@@ -13,6 +13,7 @@ class Sprint: NSObject {
     var endStation = Station()
     var timeInSeconds = 0.0
     
+    // tests if the sprints are the same route, doesn't consider time
     func isSameSprint(sprint: Sprint) -> Bool{
         if self.startStation.name == sprint.startStation.name && self.endStation.name == sprint.endStation.name {
             return true

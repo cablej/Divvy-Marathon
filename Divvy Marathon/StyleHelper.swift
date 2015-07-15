@@ -17,7 +17,9 @@ import UIKit
 let TINT_COLOR = UIColor(red: 0.271, green: 0.772, blue: 0.886, alpha: 1)
 
 class StyleHelper: NSObject {
-    
+    /** 
+        makes the viewcontroller look pretty
+    **/
     class func initializeViewController(viewController: UIViewController) {
         if let navigationController = viewController.navigationController {
             navigationController.navigationBar.barTintColor = TINT_COLOR

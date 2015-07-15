@@ -37,7 +37,10 @@ class Station: NSObject {
         self.id = id
     }
     
-    override var description: String { //for debugging, when you print out the variable this gets printed
+    /**
+        returns a string with the station name, latitude, longitude, number of bikes, and number of available spots. Use for debugging
+    **/
+    override var description: String {
         return "\(name): (\(coordinate.latitude), \(coordinate.longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
     }
     

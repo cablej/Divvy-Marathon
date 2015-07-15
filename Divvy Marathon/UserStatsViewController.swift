@@ -12,7 +12,6 @@ class UserStatsViewController: UIViewController {
 
     @IBOutlet weak var totalStations: UILabel!
     @IBOutlet weak var totalMiles: UILabel!
-    
     @IBOutlet var usernameButton: UIBarButtonItem!
     
     var userStats = UserStats()
@@ -20,10 +19,12 @@ class UserStatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameButton.title = DataManager.getUsername()
-        
         loadStats()
     }
     
+    /**
+        loads the user's data from the Server
+    **/
     func loadStats() {
         print(DataManager.getKey())
         if let key = DataManager.getKey() {

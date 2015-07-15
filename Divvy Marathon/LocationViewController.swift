@@ -103,6 +103,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     
+    /**
+        displays the whole bike route to the user
+    **/
     func displayFullRoute() {
         displayDirectionsBetweenCoordinates(MKPlacemark(coordinate: currentLocation.coordinate, addressDictionary: nil), endCoordinate: MKPlacemark(coordinate: routeStations[0].coordinate, addressDictionary: nil))
         if routeStations.count >= 2 {
@@ -112,6 +115,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     
+    /**
+        displays the route between 2 coordinates
+    **/
     func displayDirectionsBetweenCoordinates(startCoordinate: MKPlacemark, endCoordinate: MKPlacemark) {
         let request = MKDirectionsRequest()
         request.source = MKMapItem(placemark: startCoordinate)
@@ -132,6 +138,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     
+    /**
+        draws a blue line indicating the route
+    **/
     func showRoute(response: MKDirectionsResponse) {
         for route in response.routes {
             mapView.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
@@ -146,7 +155,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     /**
-        displays the nearest divvy station
+        displays and returns the nearest divvy station
     **/
     func findClosestLocation() -> Station { //displays the closest divvy station to the user's location
         var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
@@ -167,36 +176,49 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         return closestStation
     }
     
+    /**
+        returns the distance from the current location to a coordinate
+    **/
     func distanceToCoordinate(coordinate: CLLocationCoordinate2D) -> Double {
         let distance = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude).distanceFromLocation(currentLocation)
         let miles = metersToMiles(distance)
         return miles
     }
     
+    /**
+        returns the distance between two coordinates
+    **/
     func distanceBetweenTwoCoordinates(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Double {
         let distance = CLLocation(latitude: coordinate1.latitude, longitude: coordinate2.longitude).distanceFromLocation(CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude))
         let miles = metersToMiles(distance)
         return miles
     }
     
+    /**
+        converts from meters to miles
+    **/
     func metersToMiles(meters: Double) -> Double {
         return meters / METER_TO_MILE
     }
     
     //MARK: Location methods
-    
-    func initializeLocation() { //sets up everything needed for the mapView and locationManager
-        mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true) //makes the map follow the user's location, no need for all that other code updating it
+    /**
+        sets up everything needed for the map View and Location Manager
+    **/
+    func initializeLocation() {
+        //makes the map follow the user's location, no need for all that other code updating it
+        mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
+        //locationManager.requestAlwaysAuthorization() //uncomment for access in background
         locationManager = CLLocationManager()
-        //         locationManager.requestAlwaysAuthorization() //uncomment for access in background
-        locationManager.requestWhenInUseAuthorization() //allows use in foreground
+        
+        //allows use in foreground
+        locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            
             print("Location services enabled")
-            
-            locationManager.delegate = self //LocationViewController conforms to the CLLocationManagerDelegate, so the locationManager will give updates to this class
+            //LocationViewController conforms to the CLLocationManagerDelegate, so the locationManager will give updates to this class
+            locationManager.delegate = self
             mapView.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
@@ -205,16 +227,19 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { //called whenever the user's coordinates changed, which is quite often
-        
-        let location : CLLocationCoordinate2D = manager.location!.coordinate
+    /**
+        called whenever the user's coordinates change, which is quite often
+    **/
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = manager.location!
         
         if userIsNearNextStation() {
             self.messageLabel.text = "Switch bikes at " + routeStations[currentStationIndex].name + "."
+            //increases high score
             numBikesOnThisRide++
             
-            if(currentStationIndex >= 1) { //not starting point
+            //tests if not at the starting point
+            if(currentStationIndex >= 1) {
                 
                 let miles = distanceBetweenTwoCoordinates(routeStations[currentStationIndex].coordinate, coordinate2: routeStations[currentStationIndex-1].coordinate)
                 
@@ -228,12 +253,18 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
     }
     
+    /**
+        returns true if user is within 100 ft of the next station
+    **/
     func userIsNearNextStation() -> Bool {
         if routeStations.isEmpty { return false }
         let nextStation = routeStations[currentStationIndex]
         return userIsNearCoordinate(nextStation.coordinate)
     }
     
+    /**
+        returns true if user is within 100 ft of a coordinate
+    **/
     func userIsNearCoordinate(coordinate: CLLocationCoordinate2D) -> Bool {
         let distanceMiles = distanceToCoordinate(coordinate)
         let distanceFeet = distanceMiles * MILE_TO_FEET
@@ -244,6 +275,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         print("Error updating location: " + error.localizedDescription)
     }
     
+    /**
+        adds a pin to the map
+    **/
     func addPin(coordinate: CLLocationCoordinate2D, title: String) {
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate

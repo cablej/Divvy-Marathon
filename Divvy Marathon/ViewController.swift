@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onLogInButtonTapped(sender: AnyObject) {
-        if let username = DataManager.getUsername() {
+        if let _ = DataManager.getUsername() {
             userDefaults.setObject("", forKey: "key")
             userDefaults.setObject("", forKey: "username")
             logInButton.title = "Log in"

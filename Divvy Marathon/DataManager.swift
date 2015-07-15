@@ -12,11 +12,13 @@ import CoreLocation
 let DIVVY_JSON_URL = "http://www.divvybikes.com/stations/json"
 let ROUTE_URL = "http://tiphound.me/Divvy-Marathon/generateRoute.php"
 let REQUEST_URL = "http://tiphound.me/Divvy-Marathon/request.php"
-
 var lakeFrontStationNames: [String] = ["Sheridan Rd & Greenleaf Ave", "Sheridan Rd & Loyola Ave", "Broadway & Granville Ave", "Broadway & Thorndale Ave", "Lakefront Trail & Bryn Mawr Ave", "Clarendon Ave & Leland Ave", "Montrose Harbor", "Clarendon Ave & Junior Ter", "Clarendon Ave & Gordon Ter", "Pine Grove Ave & Irving Park Rd", "Pine Grove Ave & Waveland Ave", "Lake Shore Dr & Belmont Ave", "Lake Shore Dr & Wellington Ave", "Lake Shore Dr & Diversey Pkwy", "Stockton Dr & Wrightwood Ave", "Theater On The Lake", "Cannon Dr & Fullerton Ave", "Lakeview Ave & Fullerton Pkwy", "Clark St & Armitage Ave", "Clark St & Lincoln Ave", "Clark St & North Ave", "Lake Shore Dr & North Blvd", "Ritchie Ct & Banks St", "Michigan Ave & Oak St", "Michigan Ave & Oak St", "Lake Shore Dr & Ohio St", "Streeter Dr & Illinois St", "Dusable Harbor", "Lake Shore Dr & Monroe St", "Michigan Ave & Madison St", "Millennium Park", "Wabash Ave & Adams St", "Michigan Ave & Jackson Blvd", "Michigan Ave & Congress Pkwy", "Michigan Ave & Balbo Ave", "Indiana Ave & Roosevelt Rd", "Shedd Aquarium", "Museum Campus", "Adler Planetarium", "Burnham Harbor", "Fort Dearborn Dr & 31st St", "Lake Park Ave & 35th St", "Cottage grove Ave & Oakwood Blvd", "Woodlawn Ave & Lake Park Ave", "Lake Park Ave & 47th St", "Cornell Ave & Hyde Park Blvd", "Lake Park Ave & 53rd St", "Shore Dr & 55th St", "Museum of Science and Industry", "63rd St Beach", "Stony Island Ave & 64th St", "Stony Island Ave & 67th St", "Jeffery Blvd & 67th St", "South Shore Dr & 67th St", "South Shore Dr & 71st St", "South Shore Dr & 74th St", "Rainbow Beach"]
 
 class DataManager: NSObject {
     
+    /**
+        gets saves json data into an array of stations
+    **/
     class func getDivvyBikeData(success: ((stationsArray: [Station]!) -> Void)) {
         
         let url = NSURL(string: DIVVY_JSON_URL)
@@ -86,7 +88,9 @@ class DataManager: NSObject {
             }
         }
     }
-    
+    /**
+        sends a request for data to the server and does stuff with it
+    **/
     class func sendRequest(url: String, postString: String, completionHandler : (String) -> ()){
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = "POST"
@@ -111,7 +115,9 @@ class DataManager: NSObject {
         task?.resume()
     }
 
-    
+    /**
+        converts a string to a json object
+    **/
     class func stringToJSON(string: String) -> JSON? { //returns a JSON object of the given string
         let jsonObject : AnyObject?
         let json : JSON
@@ -123,7 +129,9 @@ class DataManager: NSObject {
         } catch {}
         return nil;
     }
-    
+    /**
+        saves the user's information with a key'
+    **/
     class func saveUserInformation(information: String) {
         if let json = stringToJSON(information) {
             let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -149,6 +157,9 @@ class DataManager: NSObject {
         return username == "" ? nil : username
     }
     
+    /**
+        sends a request to the server when a user reaches a station
+    **/
     class func hitStation(miles: Double) {
         
         if let key = getKey() {

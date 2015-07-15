@@ -16,7 +16,6 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var signUpUsername: UITextField!
     @IBOutlet weak var signUpPassword: UITextField!
     @IBOutlet var signUpConfirmPassword: UITextField!
-    
     @IBOutlet var messageLabel: UILabel!
     
     override func viewDidLoad() {
@@ -24,11 +23,9 @@ class LogInViewController: UIViewController {
         StyleHelper.initializeViewController(self)
     }
     
-    
     @IBAction func onLogInButtonTapped(sender: UIButton) {
         let username = logInUsername.text
         let password = logInPassword.text
-        
         let postString = "action=SignIn&username=\(username!)&password=\(password!)"
         
         DataManager.sendRequest(REQUEST_URL, postString: postString ) {
