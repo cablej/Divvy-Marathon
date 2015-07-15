@@ -12,13 +12,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var testTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var rideTypeSegmentedControl: UISegmentedControl!
     @IBOutlet var usernameLabel: UILabel!
-    
     @IBOutlet var logInButton: UIBarButtonItem!
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    
     var userStats = UserStats()
     
     override func viewDidLoad() {
@@ -40,14 +38,12 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let dvc = segue.destinationViewController as? LocationViewController {
-            
             let seconds = tripLengthInSeconds()
             dvc.userStats = userStats
             dvc.tripLengthInSeconds = seconds
+            dvc.typeOfRide = self.rideTypeSegmentedControl.selectedSegmentIndex
         }
         if let dvc = segue.destinationViewController as? UserStatsViewController {
-            
-            let seconds = tripLengthInSeconds()
             dvc.userStats = userStats
         }
 
