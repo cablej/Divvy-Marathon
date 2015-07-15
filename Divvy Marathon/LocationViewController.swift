@@ -72,7 +72,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     
                     self.processRoute(destiStations)
                     
-                } else {
+                } else if self.typeOfRide == 0 {
                     
                     DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, typeOfRide: self.typeOfRide, success: { (routeStations) -> Void in
                         self.processRoute(routeStations)
@@ -320,24 +320,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     print(error)
                 }
                 else {
-                    let actionSheet = UIAlertController(title: "Map", message: "Select Location", preferredStyle: .ActionSheet)
-                    var placemark = placemarks!.first
-                    var counter = -1
-                    while ((counter < 10) && (counter < placemarks!.count-1)) {
-                        counter++
-                        print(counter)
-                        let action = UIAlertAction(title: (placemarks![counter].name! + ", " + placemarks![counter].locality! + ", " + placemarks![counter].administrativeArea), style: .Default, handler: { (action) -> Void in
-                            placemark = placemarks![counter] as CLPlacemark!
-                            self.routeStations = [self.findClosestLocation(), self.findStationClosestToCoordinate(placemark!.location)]
-                            self.processRoute(self.routeStations)
-                        })
-                        actionSheet.addAction(action)
-                    }
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) ->Void in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }
-                    actionSheet.addAction(cancelAction)
-                    self.presentViewController(actionSheet, animated: true, completion: nil)
+                    let placemark = placemarks!.first as
+                        CLPlacemark!
+                    self.routeStations = [self.findClosestLocation(), self.findStationClosestToCoordinate(placemark!.location)]
+                    self.processRoute(self.routeStations)
                 }
         })//note this ), this is all part of method header, closure is contained in method header!!!
         textField.resignFirstResponder() // gets rid of keyboard
