@@ -143,6 +143,26 @@ class DataManager: NSObject {
         return username == "" ? nil : username
     }
     
+    class func hitStation(miles: Double) {
+        
+        let postString = "action=HitStation&key=\(getKey())&miles=\(miles)"
+        
+        DataManager.sendRequest(REQUEST_URL, postString: postString ) {
+            response in
+            
+            var message = "Successfully updated."
+            
+            if let error = DataManager.error(response) {
+                message = error
+            } else {
+                DataManager.saveUserInformation(response)
+            }
+            
+            print(message)
+            
+        }
+    }
+    
     class func error(response: String) -> String? {
         if let json = stringToJSON(response) {
             let error = json["error"].stringValue

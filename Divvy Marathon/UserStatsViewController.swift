@@ -10,19 +10,51 @@ import UIKit
 
 class UserStatsViewController: UIViewController {
 
-    @IBOutlet weak var numStationsTodayLabel: UILabel!
-    @IBOutlet weak var mostStationsInADayLabel: UILabel!
-    @IBOutlet weak var numMilesTodayLabel: UILabel!
-    @IBOutlet weak var mostMilesInADayLabel: UILabel!
+    @IBOutlet weak var totalStations: UILabel!
+    @IBOutlet weak var totalMiles: UILabel!
+    
+    @IBOutlet var usernameButton: UIBarButtonItem!
     
     var userStats = UserStats()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numStationsTodayLabel.text = "You went to \(userStats.numStationsToday) Divvy stations Today"
-        mostStationsInADayLabel.text = "Most Stations Visited in a Day: \(userStats.mostStationsInADay)"
-        numMilesTodayLabel.text = "You rode for \(userStats.numMilesToday) Miles today"
-        mostMilesInADayLabel.text = "Most Miles Ridden in a Day: \(userStats.mostMilesInADay)"
+        usernameButton.title = DataManager.getUsername()
+        
+        loadStats()
+    }
+    
+    func loadStats() {
+        if let key = DataManager.getKey() {
+            
+            let postString = "action=UserStats&key=\(key)"
+            
+            DataManager.sendRequest(REQUEST_URL, postString: postString ) {
+                response in
+                
+                if let error = DataManager.error(response) {
+                    print(error)
+                }
+                
+                if let json = DataManager.stringToJSON(response) {
+                    
+                    let miles = json["totalMiles"].doubleValue
+                    let stations = json["totalStations"].intValue
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.totalMiles.text = NSString(format: "total miles: %.1f", miles) as String
+                        self.totalStations.text = "total stations: \(stations)"
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dvc = segue.destinationViewController as? LeaderboardTableViewController {
+            dvc.type = (sender?.title!)!
+        }
     }
 
     override func didReceiveMemoryWarning() {
