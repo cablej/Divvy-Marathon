@@ -13,8 +13,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var finalLocationTextField: UITextField!
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
     
@@ -36,6 +37,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeLocation()
+        finalLocationTextField.hidden = true
         
         DataManager.getDivvyBikeData { (stationsArray) -> Void in
             if let tempStations = stationsArray {
@@ -67,6 +69,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     
                     self.processRoute(destiStations)
                     
+                } else if self.typeOfRide == 2{
+                    self.finalLocationTextField.hidden = false
                 } else {
                     
                     DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, success: { (routeStations) -> Void in
@@ -162,6 +166,25 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         var closestStation: Station = Station()
         for station in stations {
             let distance = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude).distanceFromLocation(currentLocation) //get distance between station and current location
+            let miles = metersToMiles(distance)
+            if(closestDistance == -1.0 ||  miles < closestDistance) {
+                closestDistance = miles
+                closestStation = station
+            }
+        }
+        
+        addPin(closestStation.coordinate, title: closestStation.name)
+        
+        print("\(closestStation.name) is closest at \(closestDistance) miles")
+        
+        return closestStation
+    }
+    
+    func findStationClosestToCoordinate(location: CLLocation) -> Station {
+        var closestDistance: Double = -1.0 //start with -1 because we know it will never be possible
+        var closestStation: Station = Station()
+        for station in stations {
+            let distance = CLLocation(latitude: station.coordinate.latitude, longitude: station.coordinate.longitude).distanceFromLocation(location) //get distance between station and current location
             let miles = metersToMiles(distance)
             if(closestDistance == -1.0 ||  miles < closestDistance) {
                 closestDistance = miles
@@ -283,5 +306,37 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         pin.coordinate = coordinate
         pin.title = title
         mapView.addAnnotation(pin)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(textField.text!, completionHandler:
+            {placemarks, error in
+                if error != nil {
+                    print(error)
+                }
+                else {
+                    let actionSheet = UIAlertController(title: "Map", message: "Select Location", preferredStyle: .ActionSheet)
+                    var placemark = placemarks!.first
+                    var counter = -1
+                    while ((counter < 10) && (counter < placemarks!.count-1)) {
+                        counter++
+                        print(counter)
+                        let action = UIAlertAction(title: (placemarks![counter].name! + ", " + placemarks![counter].locality! + ", " + placemarks![counter].administrativeArea), style: .Default, handler: { (action) -> Void in
+                            placemark = placemarks![counter] as CLPlacemark!
+                            self.routeStations = [self.findClosestLocation(), self.findStationClosestToCoordinate(placemark!.location)]
+                            self.processRoute(self.routeStations)
+                        })
+                        actionSheet.addAction(action)
+                    }
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) ->Void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    actionSheet.addAction(cancelAction)
+                    self.presentViewController(actionSheet, animated: true, completion: nil)
+                }
+        })//note this ), this is all part of method header, closure is contained in method header!!!
+        textField.resignFirstResponder() // gets rid of keyboard
+        return true
     }
 }

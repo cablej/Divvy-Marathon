@@ -60,8 +60,6 @@ class DataManager: NSObject {
     /**
         calculates a route based on the time the user wants to bike for, the users starting location, and the type of ride the user would like to go on
         ride types:
-        0 : basic crazy route
-        1 : lakeFront crazy route
     **/
     class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, success: ((routeStations: [Station]!) -> Void)) {
         

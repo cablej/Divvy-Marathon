@@ -137,6 +137,7 @@
                                 <segments>
                                     <segment title="Basic"/>
                                     <segment title="Lakefront"/>
+                                    <segment title="Commute"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stress level" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wv-YI-6eb">
@@ -375,7 +376,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rdp-2x-e2A" id="Lmq-M7-zrI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4S-Ly-Xmh">
@@ -437,16 +438,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AXl-ZA-LCr">
+                                <rect key="frame" x="200" y="72" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2uA-de-Vdn" id="RUp-Su-IHQ"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="TGh-yT-se6" secondAttribute="trailing" constant="-20" id="19b-WU-6hL"/>
                             <constraint firstItem="7eA-ha-FZb" firstAttribute="top" secondItem="EUY-sC-E5j" secondAttribute="bottom" id="4Zn-fS-xhB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EUY-sC-E5j" secondAttribute="trailing" constant="-20" id="DDk-Vg-WvF"/>
+                            <constraint firstItem="AXl-ZA-LCr" firstAttribute="centerX" secondItem="dWt-04-mvW" secondAttribute="centerX" id="FIY-so-ugp"/>
                             <constraint firstItem="EUY-sC-E5j" firstAttribute="top" secondItem="x80-fl-hKM" secondAttribute="bottom" id="HuM-0O-j2d"/>
                             <constraint firstItem="EUY-sC-E5j" firstAttribute="leading" secondItem="dWt-04-mvW" secondAttribute="leadingMargin" constant="-20" id="ImO-8C-9mI"/>
                             <constraint firstItem="TGh-yT-se6" firstAttribute="leading" secondItem="dWt-04-mvW" secondAttribute="leadingMargin" constant="-20" id="eCb-Gg-MQN"/>
                             <constraint firstItem="7eA-ha-FZb" firstAttribute="top" secondItem="TGh-yT-se6" secondAttribute="bottom" id="tmQ-h4-sWJ"/>
+                            <constraint firstItem="EUY-sC-E5j" firstAttribute="top" secondItem="AXl-ZA-LCr" secondAttribute="bottom" constant="-102" id="yiR-ug-Msg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Divvy Marathon" id="C62-zv-cky">
@@ -458,6 +469,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="finalLocationTextField" destination="AXl-ZA-LCr" id="6mw-0f-7te"/>
                         <outlet property="mapView" destination="EUY-sC-E5j" id="eaa-Ex-kJf"/>
                         <outlet property="messageLabel" destination="TGh-yT-se6" id="Nkx-Sb-Ise"/>
                     </connections>
@@ -479,7 +491,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4gh-P1-4F0" id="Tk2-I0-Z7u">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a left on sample road" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-kl-4S1">
