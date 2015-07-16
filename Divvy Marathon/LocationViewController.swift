@@ -94,6 +94,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     func processRoute(stationsToProccess: [Station]) {
+        self.currentRoute = []
         mapView.removeAnnotations(mapView.annotations)
         for station in stationsToProccess {
             self.addPin(station)
