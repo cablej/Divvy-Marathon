@@ -312,6 +312,28 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         mapView.addAnnotation(pin)
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        if annotation.isKindOfClass(MKPointAnnotation) {
+            if let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("CustomPinAnnotationView") as? MKPinAnnotationView  {
+                pinView.annotation = annotation
+                return pinView
+            } else {
+                /*pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomPinAnnotationView")
+                pinView!.image = UIImage(named: "divvy_arrows")
+                pinView?.frame = CGRect(origin: CGPointZero, size: CGSize(width: 32, height: 32))*/
+                let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "CustomPinAnnotationView")
+                pinView.pinColor = MKPinAnnotationColor.Purple
+                return pinView
+            }
+        }
+        return nil
+        
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         routeStations = []
         let geocoder = CLGeocoder()
