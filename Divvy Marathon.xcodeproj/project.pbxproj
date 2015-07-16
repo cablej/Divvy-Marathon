@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108B1B01B50587C00866503 /* SwiftyJSON.swift */; };
+		D108B1B31B5066AD00866503 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D108B1B21B5066AD00866503 /* DataManager.swift */; };
+		D10E02E61B54084400C57F51 /* RouteCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E02E51B54084400C57F51 /* RouteCoordinate.swift */; };
 		D15875531B502E3900B44588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875521B502E3900B44588 /* AppDelegate.swift */; };
 		D15875551B502E3900B44588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875541B502E3900B44588 /* ViewController.swift */; };
 		D15875581B502E3900B44588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D15875561B502E3900B44588 /* Main.storyboard */; };
@@ -16,8 +19,16 @@
 		D15875731B502E3A00B44588 /* Divvy_MarathonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875721B502E3A00B44588 /* Divvy_MarathonUITests.swift */; };
 		D15875811B5035B600B44588 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15875801B5035B600B44588 /* Station.swift */; };
 		D15875831B50375300B44588 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15875821B50375300B44588 /* MapKit.framework */; };
+		D171D81C1B568F43006271BB /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171D81B1B568F43006271BB /* LeaderboardTableViewController.swift */; };
+		D171D81E1B56A8FE006271BB /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */; };
 		D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18812681B50392A00B1C5FE /* LocationViewController.swift */; };
 		D188126B1B50473200B1C5FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D188126A1B50473200B1C5FE /* CoreLocation.framework */; };
+		D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18F37C21B52E43000367AAC /* StyleHelper.swift */; };
+		D1C913C51B52F22D003FFFD3 /* ViewRouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */; };
+		D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */; };
+		DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F75291B544850007D650C /* LogInViewController.swift */; };
+		DAE18B831B55691F00403CC2 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */; };
+		DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B841B556BE700403CC2 /* UserStats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D108B1B01B50587C00866503 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D108B1B21B5066AD00866503 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D10E02E51B54084400C57F51 /* RouteCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCoordinate.swift; sourceTree = "<group>"; };
 		D158754F1B502E3900B44588 /* Divvy Marathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Divvy Marathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15875521B502E3900B44588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15875541B502E3900B44588 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,8 +67,16 @@
 		D15875741B502E3A00B44588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D15875801B5035B600B44588 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		D15875821B50375300B44588 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D171D81B1B568F43006271BB /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
+		D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		D18812681B50392A00B1C5FE /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D188126A1B50473200B1C5FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D18F37C21B52E43000367AAC /* StyleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleHelper.swift; sourceTree = "<group>"; };
+		D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouteTableViewController.swift; sourceTree = "<group>"; };
+		D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStepTableViewCell.swift; sourceTree = "<group>"; };
+		DA7F75291B544850007D650C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
+		DAE18B841B556BE700403CC2 /* UserStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +106,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D108B1AD1B50585A00866503 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D108B1B01B50587C00866503 /* SwiftyJSON.swift */,
+				D108B1B21B5066AD00866503 /* DataManager.swift */,
+				D18F37C21B52E43000367AAC /* StyleHelper.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		D108B1AE1B50586500866503 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				DAE18B841B556BE700403CC2 /* UserStats.swift */,
+				D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */,
+				D15875801B5035B600B44588 /* Station.swift */,
+				D10E02E51B54084400C57F51 /* RouteCoordinate.swift */,
+				D171D81D1B56A8FE006271BB /* UserTableViewCell.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		D108B1AF1B50586900866503 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA7F75291B544850007D650C /* LogInViewController.swift */,
+				D15875541B502E3900B44588 /* ViewController.swift */,
+				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
+				D1C913C41B52F22D003FFFD3 /* ViewRouteTableViewController.swift */,
+				DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */,
+				D171D81B1B568F43006271BB /* LeaderboardTableViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D15875461B502E3900B44588 = {
 			isa = PBXGroup;
 			children = (
@@ -109,11 +166,11 @@
 		D15875511B502E3900B44588 /* Divvy Marathon */ = {
 			isa = PBXGroup;
 			children = (
+				D108B1AF1B50586900866503 /* View Controllers */,
+				D108B1AE1B50586500866503 /* Objects */,
+				D108B1AD1B50585A00866503 /* Helper Classes */,
 				D15875521B502E3900B44588 /* AppDelegate.swift */,
-				D15875541B502E3900B44588 /* ViewController.swift */,
 				D15875561B502E3900B44588 /* Main.storyboard */,
-				D18812681B50392A00B1C5FE /* LocationViewController.swift */,
-				D15875801B5035B600B44588 /* Station.swift */,
 				D15875591B502E3900B44588 /* Assets.xcassets */,
 				D158755B1B502E3900B44588 /* LaunchScreen.storyboard */,
 				D158755E1B502E3900B44588 /* Info.plist */,
@@ -274,10 +331,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */,
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
+				D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */,
+				D171D81E1B56A8FE006271BB /* UserTableViewCell.swift in Sources */,
+				DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */,
+				D171D81C1B568F43006271BB /* LeaderboardTableViewController.swift in Sources */,
+				D108B1B31B5066AD00866503 /* DataManager.swift in Sources */,
+				D1C913C71B52F32C003FFFD3 /* RouteStepTableViewCell.swift in Sources */,
+				DAE18B831B55691F00403CC2 /* UserStatsViewController.swift in Sources */,
 				D15875811B5035B600B44588 /* Station.swift in Sources */,
 				D15875531B502E3900B44588 /* AppDelegate.swift in Sources */,
+				D108B1B11B50587C00866503 /* SwiftyJSON.swift in Sources */,
+				D1C913C51B52F22D003FFFD3 /* ViewRouteTableViewController.swift in Sources */,
 				D18812691B50392A00B1C5FE /* LocationViewController.swift in Sources */,
+				D10E02E61B54084400C57F51 /* RouteCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cable.Divvy-Marathon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -434,6 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cable.Divvy-Marathon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
