@@ -96,7 +96,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     func processRoute(stationsToProccess: [Station]) {
         mapView.removeAnnotations(mapView.annotations)
         for station in stationsToProccess {
-            self.addPin(station.coordinate, title: station.name)
+            self.addPin(station)
         }
         
         self.routeStations += stationsToProccess
@@ -176,7 +176,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         
-        addPin(closestStation.coordinate, title: closestStation.name)
+        addPin(closestStation)
         
         print("\(closestStation.name) is closest at \(closestDistance) miles")
         
@@ -195,7 +195,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             }
         }
         
-        addPin(closestStation.coordinate, title: closestStation.name)
+        addPin(closestStation)
         
         print("\(closestStation.name) is closest at \(closestDistance) miles")
         
@@ -302,12 +302,13 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     }
     
     /**
-        adds a pin to the map
+        adds a station pin to the map
     **/
-    func addPin(coordinate: CLLocationCoordinate2D, title: String) {
+    func addPin(station: Station) {
         let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = title
+        pin.coordinate = station.coordinate
+        pin.title = station.name
+        pin.subtitle = "bikes: \(station.numBikesAvailable)     docks: \(station.numSpotsAvailable)"
         mapView.addAnnotation(pin)
     }
     
