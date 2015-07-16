@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var logInButton: UIBarButtonItem!
     @IBOutlet var stressLevelSlider: UISlider!
     
+    @IBOutlet var challengeLevel: [UIView]!
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var userStats = UserStats()
@@ -72,7 +73,16 @@ class ViewController: UIViewController {
         return Double(datePicker.countDownDuration) //all that parsing was for nothing...
     }
 
+    @IBAction func rideTypeChanged(sender: UISegmentedControl) {
+        let rideType = sender.selectedSegmentIndex
+        hideChallengeLevel(rideType != 0) //if basic is selected, display it
+    }
    
+    func hideChallengeLevel(hidden: Bool) {
+        for object in challengeLevel {
+            object.hidden = hidden
+        }
+    }
 
 }
 

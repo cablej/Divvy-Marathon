@@ -29,7 +29,6 @@
 		DA7F752A1B544850007D650C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7F75291B544850007D650C /* LogInViewController.swift */; };
 		DAE18B831B55691F00403CC2 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */; };
 		DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B841B556BE700403CC2 /* UserStats.swift */; };
-		DAE18B871B556C8400403CC2 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18B861B556C8400403CC2 /* Sprint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAE18B851B556BE700403CC2 /* UserStats.swift in Sources */,
-				DAE18B871B556C8400403CC2 /* Sprint.swift in Sources */,
 				D15875551B502E3900B44588 /* ViewController.swift in Sources */,
 				D18F37C31B52E43000367AAC /* StyleHelper.swift in Sources */,
 				D171D81E1B56A8FE006271BB /* UserTableViewCell.swift in Sources */,
