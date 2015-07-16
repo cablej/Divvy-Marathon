@@ -77,7 +77,6 @@
 		DA7F75291B544850007D650C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		DAE18B821B55691F00403CC2 /* UserStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
 		DAE18B841B556BE700403CC2 /* UserStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
-		DAE18B861B556C8400403CC2 /* Sprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sprint.swift; path = ../Sprint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +119,6 @@
 		D108B1AE1B50586500866503 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				DAE18B861B556C8400403CC2 /* Sprint.swift */,
 				DAE18B841B556BE700403CC2 /* UserStats.swift */,
 				D1C913C61B52F32C003FFFD3 /* RouteStepTableViewCell.swift */,
 				D15875801B5035B600B44588 /* Station.swift */,

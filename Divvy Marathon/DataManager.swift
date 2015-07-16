@@ -81,7 +81,9 @@ class DataManager: NSObject {
                     let id = stationJSON.1["station"]["id"].stringValue
                     let latitude = stationJSON.1["station"]["latitude"].doubleValue
                     let longitude = stationJSON.1["station"]["longitude"].doubleValue
-                    let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, id: id)
+                    let availableDocks = stationJSON.1["station"]["availableDocks"].intValue
+                    let availableBikes = stationJSON.1["station"]["availableBikes"].intValue
+                    let station = Station(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), numSpotsAvailable: availableDocks, numBikesAvailable: availableBikes, name: name, id: id)
                         routeStations.append(station)
                 }
                 
