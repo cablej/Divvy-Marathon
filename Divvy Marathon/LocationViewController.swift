@@ -49,13 +49,6 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 
                 let location = self.findClosestLocation()
                 
-                self.routeStations.append(location)
-                
-                print(location)
-                
-                self.displayFullRoute()
-                
-                
                 if self.typeOfRide == 1 {
                     
                     var destiStations : [Station] = [location]
@@ -75,21 +68,13 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 } else if self.typeOfRide == 0 {
                     
                     DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, typeOfRide: self.typeOfRide, success: { (routeStations) -> Void in
-                        self.processRoute(routeStations)
+                        let routeToDo = [location] + routeStations
+                        self.processRoute(routeToDo)
                     })
 
                 }
             }
         }
-        
-        if routeStations.count>=2{
-            for i in 0...routeStations.count-2 {
-                tripLengthInMiles += distanceBetweenTwoCoordinates(routeStations[i].coordinate, coordinate2: routeStations[i+1].coordinate)
-        
-            }
-        }
-        print("Seconds: " + String(tripLengthInSeconds))
-        userStats.numStationsToday += routeStations.count
         
     }
     
@@ -100,7 +85,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
             self.addPin(station)
         }
         
-        self.routeStations += stationsToProccess
+        self.routeStations = stationsToProccess
         self.displayFullRoute()
     }
     
@@ -326,8 +311,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                 else {
                     let placemark = placemarks!.first as
                         CLPlacemark!
-                    self.routeStations = [self.findClosestLocation(), self.findStationClosestToCoordinate(placemark!.location)]
-                    self.processRoute(self.routeStations)
+                    let routeToDestination = [self.findClosestLocation(), self.findStationClosestToCoordinate(placemark!.location)]
+                    self.processRoute(routeToDestination)
                 }
         })//note this ), this is all part of method header, closure is contained in method header!!!
         textField.resignFirstResponder() // gets rid of keyboard
