@@ -64,9 +64,13 @@ class DataManager: NSObject {
         1 : lakefront
         ...to be continued...
     **/
-    class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, typeOfRide: Int, success: ((routeStations: [Station]!) -> Void)) {
+    class func getRoute(seconds: Double, startStation: Station, stressLevel: Double, success: ((routeStations: [Station]!) -> Void)) {
+        var stressLevel = stressLevel
+        if stressLevel == 0 {
+            stressLevel = 5
+        }
         
-        let postString = "seconds=\(seconds)&startingStation=\(startStation.id)&minTim=\(stressLevel)"
+        let postString = "seconds=\(seconds)&startingStation=\(53/*startStation.id*/)&minTim=\(stressLevel)"
         
         sendRequest(ROUTE_URL, postString: postString)  {
             response in

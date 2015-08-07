@@ -37,11 +37,29 @@ class Station: NSObject {
         self.id = id
     }
     
+    func encodeWithCoder(encoder: NSCoder) {
+        encoder.encodeObject(name, forKey: "name")
+        encoder.encodeObject(id, forKey: "id")
+        encoder.encodeObject(coordinate.latitude, forKey: "latitude")
+        encoder.encodeObject(coordinate.longitude, forKey: "longitude")
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    init(coder decoder: NSCoder) {
+        self.name = decoder.decodeObjectForKey("name") as! String
+        self.id = decoder.decodeObjectForKey("id") as! String
+        self.coordinate.latitude = decoder.decodeObjectForKey("latitude") as! CLLocationDegrees
+        self.coordinate.longitude = decoder.decodeObjectForKey("longitude") as! CLLocationDegrees
+    }
+    
     /**
         returns a string with the station name, latitude, longitude, number of bikes, and number of available spots. Use for debugging
     **/
     override var description: String {
         return "\(name): (\(coordinate.latitude), \(coordinate.longitude)), \(numBikesAvailable) bikes available and \(numSpotsAvailable) spots available"
     }
-    
+
 }

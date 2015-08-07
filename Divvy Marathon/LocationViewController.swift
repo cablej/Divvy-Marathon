@@ -67,7 +67,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
                     
                 } else if self.typeOfRide == 0 {
                     
-                    DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, typeOfRide: self.typeOfRide, success: { (routeStations) -> Void in
+                    DataManager.getRoute(self.tripLengthInSeconds, startStation: location, stressLevel: self.stressLevel, success: { (routeStations) -> Void in
                         let routeToDo = [location] + routeStations
                         self.processRoute(routeToDo)
                     })
