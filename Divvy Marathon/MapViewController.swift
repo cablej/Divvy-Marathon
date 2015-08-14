@@ -69,9 +69,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     /**
     called whenever the user's coordinates change, which is quite often
     **/
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //print(manager.location!)
-    }
+    //}
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error updating location: " + error.localizedDescription)
@@ -165,8 +165,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print(numRequests)
         
         let request = MKDirectionsRequest()
-        request.source = MKMapItem(placemark: startCoordinate)
-        request.destination = MKMapItem(placemark: endCoordinate)
+        request.setSource(MKMapItem(placemark: startCoordinate))
+        request.setDestination(MKMapItem(placemark: endCoordinate))
         request.requestsAlternateRoutes = false
         request.transportType = MKDirectionsTransportType.Walking
         
@@ -178,7 +178,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             } else {
                 if let route = response?.routes.first {
                     let index = self.currentRouteDirections.count //it'll be the next element
-                    self.currentRouteDirections.append(route)
+                    self.currentRouteDirections.append(route as! MKRoute)
                     success(index: index)
                 }
             }
@@ -188,9 +188,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     /**
     draws a blue line indicating the route
     **/
-    func displayMKRoute(route: MKRoute) {
+    func displayMKRoute(route:MKRoute) {
         for step in route.steps {
-            mapView.addOverlay(step.polyline, level: MKOverlayLevel.AboveRoads)
+            let step: MKRouteStep = step as! MKRouteStep
+            
+            mapView.addOverlay(step.polyline)
         }
     }
     

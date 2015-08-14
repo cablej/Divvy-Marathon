@@ -102,8 +102,9 @@ class ManageRouteTableViewController: UITableViewController, CLLocationManagerDe
     /**
     called whenever the user's coordinates change, which is quite often
     **/
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let closestStation = RouteManager.findClosestStation(manager.location!.coordinate)
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        let closestStation = RouteManager.findClosestStation(newLocation.coordinate)
         if(route == []) {
             RouteManager.setRoute([closestStation])
             route = [closestStation]

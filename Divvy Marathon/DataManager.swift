@@ -25,7 +25,7 @@ class DataManager: NSObject {
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) -> Void in
             if let urlData = data {
-                if let divvyJSON = stringToJSON(NSString(data: urlData, encoding: NSUTF8StringEncoding) as! String) {
+                if let divvyJSON = DataManager.stringToJSON(NSString(data: urlData, encoding: NSUTF8StringEncoding) as! String) {
                     
                     var stations : [Station] = []
                     
@@ -53,7 +53,7 @@ class DataManager: NSObject {
             }
         }
         
-        task?.resume()
+        task.resume()
         
     }
     
@@ -75,7 +75,7 @@ class DataManager: NSObject {
         sendRequest(ROUTE_URL, postString: postString)  {
             response in
             
-            if let routeJSON = stringToJSON(response) {
+            if let routeJSON = DataManager.stringToJSON(response) {
                 
                 var routeStations : [Station] = []
                 
@@ -119,23 +119,29 @@ class DataManager: NSObject {
             
         }
         
-        task?.resume()
+        task.resume()
     }
 
     /**
         converts a string to a json object
     **/
-    class func stringToJSON(string: String) -> JSON? { //returns a JSON object of the given string
+    
+    
+    class func stringToJSON(string: String) -> JSON? {
         let jsonObject : AnyObject?
+        
         let json : JSON
-        do {
-            jsonObject = try NSJSONSerialization.JSONObjectWithData(string.dataUsingEncoding(NSUTF8StringEncoding)!,
-                options: NSJSONReadingOptions.AllowFragments)
-            json = JSON(jsonObject!)
-            return json
-        } catch {}
-        return nil;
+        
+        var error: NSError?
+        
+        jsonObject = NSJSONSerialization.JSONObjectWithData(string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        
+        
+        json = JSON(jsonObject!)
+        
+        return json
     }
+    
     /**
         saves the user's information with a key'
     **/
